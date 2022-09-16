@@ -1,29 +1,28 @@
-package hbv501g.SoftProjectOne;
+package hbv501g.ProjectOne;
 
 
-import hbv501g.SoftProjectOne.Data.Recipe;
-import hbv501g.SoftProjectOne.Data.RecipeRepository;
-import hbv501g.SoftProjectOne.Data.RecipeService;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import java.util.ArrayList;
+import java.util.Optional;
 
 @Controller
 public class frontController {
 
+    @Autowired
+    private CustomerRepository customers;
+
     @GetMapping
     String frontPage(Model model){
-    /*  ArrayList<String> ingr = new ArrayList<>();
-        ingr.add("testIngredient1"); ingr.add("testIngredient2");
-        Recipe testRecipe = new Recipe(ingr,"testImageName");
-        recipeRepository.save(testRecipe);*/
-        //RecipeService rs = new RecipeService();
-
-        //Iterable<Recipe> test = rs.getAllRecipes();
+        System.out.println(customers.findAll());
         return "index";
     }
 
