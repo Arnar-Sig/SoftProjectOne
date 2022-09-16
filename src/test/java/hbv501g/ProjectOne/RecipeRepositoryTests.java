@@ -18,28 +18,25 @@ package hbv501g.ProjectOne;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import java.util.List;
-
-import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 
 @DataJpaTest
-public class CustomerRepositoryTests {
+public class RecipeRepositoryTests {
 	@Autowired
 	private TestEntityManager entityManager;
 
 	@Autowired
-	private CustomerRepository customers;
+	private RecipeRepository recipe;
 
-	@Test
+/*	@Test TODO: Change to Recipes!
 	public void testFindByLastName() {
-		Customer customer = new Customer("first", "last");
-		entityManager.persist(customer);
+		Recipe recipe = new Recipe("first", "last",);
+		entityManager.persist(recipe);
 
-		List<Customer> findByLastName = customers.findByLastName(customer.getLastName());
+		List<Recipe> findByLastName = customers.findByLastName(recipe.getLastName());
 
-		assertThat(findByLastName).extracting(Customer::getLastName).containsOnly(customer.getLastName());
-	}
+		assertThat(findByLastName).extracting(Recipe::getLastName).containsOnly(recipe.getLastName());
+	}*/
 }
