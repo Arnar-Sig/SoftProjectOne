@@ -32,8 +32,7 @@ public class Main {
 		return (args) -> {
 			// save a few customers
 			repo = repository;
-			ArrayList<String> ingredients = new ArrayList<>(); ingredients.add("Minced Meat"); ingredients.add("Spaghetti"); ingredients.add("Pasta Sauce");
-			repository.save(new Recipe(ingredients, "Cook the thing!"));
+
 	/*		repository.save(new Customer("Chloe", "O'Brian"));
 			repository.save(new Customer("Kim", "Bauer"));
 			repository.save(new Customer("David", "Palmer"));

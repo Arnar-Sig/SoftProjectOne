@@ -14,6 +14,7 @@ public class Recipe {
 	private Long id;
 	private ArrayList<String> ingredients;
 	private String instructions;
+	private String name;
 
 	public ArrayList<String> getIngredients() {
 		return ingredients;
@@ -26,9 +27,10 @@ public class Recipe {
 	}
 
 	protected Recipe() {}
-	public Recipe(ArrayList<String> ingredients, String instructions) {
+	public Recipe(String name, ArrayList<String> ingredients, String instructions) {
 		this.ingredients = ingredients;
 		this.instructions = instructions;
+		this.name = name;
 	}
 
 	@Override
