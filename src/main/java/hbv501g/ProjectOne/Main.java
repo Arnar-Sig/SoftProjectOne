@@ -13,9 +13,7 @@ import java.util.ArrayList;
 public class Main {
 
 
-	public RecipeRepository getRepo() {
-		return repo;
-	}
+
 	private RecipeRepository repo;
 
 

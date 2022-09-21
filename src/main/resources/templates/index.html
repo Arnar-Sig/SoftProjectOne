@@ -1,23 +1,19 @@
 <!DOCTYPE html>
-<html xmlns:th="https://www.thymeleaf.org">
+<!--<html xmlns:th="https://www.thymeleaf.org">-->
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Lazybones Recipes</title>
+    <link rel="stylesheet" href="/css/front.css" th:href="@{/css/front.css}">
 
 </head>
 <body>
 <!--<p th:text="${test}"></p>-->
-<button></button>
-<p>TEST PARAGRAPH 1!</p>
-<div>
-<!--
-    <h3 th:each="recipe: ${recipes}"></h3>
-    <p th:text="${recipes.name}"></p>
-    <p th:text="${recipes.ingredients}"></p>
-    <p th:text="${recipes.instructions}"></p>
--->
-
-</div>
-<!--<p th:text="${recipes}"></p>-->
+    <button></button>
+    <p>TEST PARAGRAPH 1!</p>
+    <div th:each="recipe: ${all}">
+        <p th:text="${recipe.instructions}"></p>
+    </div>
+    <!--<p th:text="${recipes}"></p>-->
 </body>
 </html>

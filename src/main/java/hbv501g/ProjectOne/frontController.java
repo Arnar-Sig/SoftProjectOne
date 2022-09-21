@@ -28,7 +28,19 @@ public class frontController {
         ArrayList<String> ingredients2 = new ArrayList<>(); ingredients2.add("Minced Meat"); ingredients2.add("Spaghetti"); ingredients2.add("Pasta Sauce");
 		recipes.save(new Recipe("Spaghetti", ingredients2, "Cook the thing!"));
 		*/
+        /*
+        Iterable<Recipe> r = recipes.findAll();
+        for (Recipe i:r){
+            System.out.println(i.getIngredients().get(0));
+        }
+        */
+        Iterable<Recipe> iter = recipes.findAll();
+        ArrayList<Recipe> all = new ArrayList<>();
+        for (Recipe r: iter) {
+            all.add(r);
+        }
 
+        model.addAttribute("all", all);
         return "index";
     }
 
