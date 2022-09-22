@@ -25,6 +25,9 @@ public class Recipe {
 	public Long getId() {
 		return id;
 	}
+	public String getName() {
+		return name;
+	}
 
 	protected Recipe() {}
 	public Recipe(String name, ArrayList<String> ingredients, String instructions) {
@@ -41,4 +44,6 @@ public class Recipe {
 				", instructions='" + instructions + '\'' +
 				'}';
 	}
+
+
 }

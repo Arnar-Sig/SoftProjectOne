@@ -20,14 +20,16 @@ public class frontController {
 
     @GetMapping
     String frontPage(Model model){
-        /*
-        // Dummy Test data!
-        ArrayList<String> ingredients = new ArrayList<>(); ingredients.add("Rice"); ingredients.add("Milk"); ingredients.add("Raisins");
-        Recipe r = new Recipe("Porridge", ingredients, "Boil it to bits!");
-        recipes.save(r);
-        ArrayList<String> ingredients2 = new ArrayList<>(); ingredients2.add("Minced Meat"); ingredients2.add("Spaghetti"); ingredients2.add("Pasta Sauce");
-		recipes.save(new Recipe("Spaghetti", ingredients2, "Cook the thing!"));
-		*/
+/*        // Dummy Test data!
+        ArrayList<String> ingredients = new ArrayList<>(); ingredients.add("Tuna"); ingredients.add("Pasta"); ingredients.add("Egg"); ingredients.add("Any vegetable");
+
+        recipes.save(new Recipe("Tuna-Egg-Pasta", ingredients, "Boil eggs and pasta for 10 minutes. Combine in a bowl and add tuna and veggies."));
+        ArrayList<String> ingredients2 = new ArrayList<>(); ingredients2.add("Noodles"); ingredients2.add("Cheese"); ingredients2.add("Egg");
+		recipes.save(new Recipe("Slightly better noodles", ingredients2, "Fry an egg. Put noodles and sauce in a pan. " +
+                "Sprinkle cheese on top and let it melt. Put egg on top."));
+         */
+
+
         /*
         Iterable<Recipe> r = recipes.findAll();
         for (Recipe i:r){
@@ -39,7 +41,6 @@ public class frontController {
         for (Recipe r: iter) {
             all.add(r);
         }
-
         model.addAttribute("all", all);
         return "index";
     }
