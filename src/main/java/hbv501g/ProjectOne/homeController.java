@@ -15,25 +15,45 @@ public class homeController {
     @Autowired
     private RecipeRepository recipes;
     @GetMapping("/")
-    public String greetingForm(Model model) {
+    public String homePage(Model model) {
         // Temporarily adds all data to the model - Remove after implementing better solution
-        Iterable<Recipe> iter = recipes.findAll();
+/*        Iterable<Recipe> iter = recipes.findAll();
         ArrayList<Recipe> all = new ArrayList<>();
         for (Recipe r: iter) {
             all.add(r);
-        }
+        }*/
+/*
         model.addAttribute("all", all);
         //
-
-        model.addAttribute("search", new SearchModel());
+*/
+        SearchModel sm = new SearchModel();
+        model.addAttribute("search", sm);
         return "index";
     }
 
     @PostMapping("/index")
-    public String greetingSubmit(@ModelAttribute SearchModel search, Model model) {
-        // Search in database
-        //System.out.println(search.getContent());
+    public String searchSubmit(@ModelAttribute SearchModel search, Model model) {
+        // Get all recipes
+        Iterable<Recipe> iter = recipes.findAll();
+        ArrayList<Recipe> allRecipes = new ArrayList<>();
+        for (Recipe r: iter) {
+            allRecipes.add(r);
+        }
+
+        // Search parameters
         model.addAttribute("search", search);
+        String searchContent = search.getContent();
+
+
+        // Add filtered recipes
+        ArrayList<Recipe> filteredRecipes = new ArrayList<>();
+        for (Recipe r:allRecipes) {
+            if(r.getName().equalsIgnoreCase(searchContent)){
+                filteredRecipes.add(r);
+            }
+        }
+        model.addAttribute("all", filteredRecipes);
+
         return "recipePage";
     }
 }

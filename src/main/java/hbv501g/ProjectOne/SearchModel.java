@@ -1,9 +1,21 @@
 package hbv501g.ProjectOne;
 
+import java.util.ArrayList;
+
 public class SearchModel {
 
     private long id;
     private String content;
+
+    public ArrayList<Recipe> getRecipes() {
+        return recipes;
+    }
+
+    public void setRecipes(ArrayList<Recipe> recipes) {
+        this.recipes = recipes;
+    }
+
+    private ArrayList<Recipe> recipes;
 
     public long getId() {
         return id;
