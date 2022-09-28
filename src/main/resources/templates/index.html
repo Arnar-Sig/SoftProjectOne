@@ -11,38 +11,14 @@
 
     </head>
     <body>
-        <div class="container mx-auto" style="width: 400px;">
-            <select class="form-select" multiple aria-label="multiple select example">
-                <option selected>Open this select menu</option>
-                <option value="1">One</option>
-                <option value="2">Two</option>
-                <option value="3">Three</option>
-            </select>
-
-         <form class="form-inline my-2 my-lg-0">
-                <input class="form-control mr-sm-2" type="search" name="keyword" th:value="${keyword}" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><a th:href="@{/search/}">Search</a></button>
-            </form>
-        </div>
-<!--    <div class="container">
-        <select class="form-select" multiple aria-label="multiple select example">
-            <option selected>Open this select menu</option>
-            <option value="1">One</option>
-            <option value="2">Two</option>
-            <option value="3">Three</option>
-        </select>
-        <div class="container mx-auto" style="width: 400px;">
-            <form class="form-inline my-2 my-lg-0">
-                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><a th:href="@{/search/}">Search</a></button>
-            </form>
-        </div>
-    </div>-->
-
-<!--
-                #### MOVED TO recipePage.html! ####
-<div class="card-deck mx-auto">
-            <div class="mx-auto d-flex">
+    <h1>Form</h1>
+    <form action="#" th:action="@{/index}" th:object="${search}" method="post">
+<!--        <p>Id: <input type="text" th:field="*{id}" /></p>-->
+        <p>Message: <input type="text" th:field="*{content}" /></p>
+        <p><input type="submit" value="Submit" /> <!--<input type="reset" value="Reset" /></p>-->
+    </form>
+    <div class="card-deck mx-auto">
+        <div class="mx-auto d-flex">
             <div th:each="recipe: ${all}">
                 <div class="card" style="width: 18rem;">
                     <img src="/img/placeholder.jpg" class="card-img-top" alt="...">
@@ -57,10 +33,8 @@
                     </div>
                 </div>
             </div>
-            </div>
-        </div>-->
-
-
+        </div>
+    </div>
 
     </body>
 </html>

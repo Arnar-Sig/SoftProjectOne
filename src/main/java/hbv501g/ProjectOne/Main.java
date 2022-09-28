@@ -12,14 +12,8 @@ import java.util.ArrayList;
 @SpringBootApplication
 public class Main {
 
-
-
 	private RecipeRepository repo;
-
-
-
 	private static final Logger log = LoggerFactory.getLogger(Main.class);
-
 	public static void main(String[] args) {
 		SpringApplication.run(Main.class);
 	}

@@ -11,25 +11,26 @@
 
 </head>
 <body>
-<!--<p th:text="${sm.keyword}"></p>-->
-<div class="card-deck mx-auto">
-  <div class="mx-auto d-flex">
-    <div th:each="recipe: ${all}">
-      <div class="card" style="width: 18rem;">
-        <img src="/img/placeholder.jpg" class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title" th:text="${recipe.name}"></h5>
-        </div>
-        <ul class="list-group list-group-flush" th:each="ingredient: ${recipe.ingredients}">
-          <li class="list-group-item" th:text="${ingredient}"></li>
-        </ul>
-        <div class="card-body">
-          <p class="card-text" th:text="${recipe.instructions}"></p>
+<!--<p th:text="'id: ' + ${search.id}" />-->
+  <p th:text="'content: ' + ${search.content}" />
+  <!--<div class="card-deck mx-auto">
+    <div class="mx-auto d-flex">
+      <div th:each="recipe: ${all}">
+        <div class="card" style="width: 18rem;">
+          <img src="/img/placeholder.jpg" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title" th:text="${recipe.name}"></h5>
+          </div>
+          <ul class="list-group list-group-flush" th:each="ingredient: ${recipe.ingredients}">
+            <li class="list-group-item" th:text="${ingredient}"></li>
+          </ul>
+          <div class="card-body">
+            <p class="card-text" th:text="${recipe.instructions}"></p>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-</div>
+  </div>-->
 
 
 </body>
