@@ -5,6 +5,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import java.util.ArrayList;
+import java.util.HashSet;
 
 @Entity
 public class Recipe {
@@ -12,11 +13,11 @@ public class Recipe {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long id;
-	private ArrayList<String> ingredients;
+	private HashSet<String> ingredients;
 	private String instructions;
 	private String name;
 
-	public ArrayList<String> getIngredients() {
+	public HashSet<String> getIngredients() {
 		return ingredients;
 	}
 	public String getInstructions() {
@@ -30,7 +31,7 @@ public class Recipe {
 	}
 
 	protected Recipe() {}
-	public Recipe(String name, ArrayList<String> ingredients, String instructions) {
+	public Recipe(String name, HashSet<String> ingredients, String instructions) {
 		this.ingredients = ingredients;
 		this.instructions = instructions;
 		this.name = name;

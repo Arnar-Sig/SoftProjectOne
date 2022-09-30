@@ -9,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 
 @Controller
 public class homeController {
@@ -48,6 +49,7 @@ public class homeController {
 
         // Add filtered recipes
         ArrayList<Recipe> filteredRecipes = new ArrayList<>();
+
         for (Recipe r:allRecipes) {
             if(r.getName().equalsIgnoreCase(searchContent)){
                 filteredRecipes.add(r);
