@@ -1,4 +1,4 @@
-package hbv501g.ProjectOne;
+package hbv501g.ProjectOne.Entities;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

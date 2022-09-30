@@ -1,7 +1,6 @@
-package hbv501g.ProjectOne;
+package hbv501g.ProjectOne.Repositories;
 
-import java.util.List;
-
+import hbv501g.ProjectOne.Entities.Recipe;
 import org.springframework.data.repository.CrudRepository;
 
 public interface RecipeRepository extends CrudRepository<Recipe, Long> {

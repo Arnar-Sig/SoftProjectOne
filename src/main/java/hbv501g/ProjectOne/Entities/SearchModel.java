@@ -1,4 +1,6 @@
-package hbv501g.ProjectOne;
+package hbv501g.ProjectOne.Entities;
+
+import hbv501g.ProjectOne.Entities.Recipe;
 
 import java.util.ArrayList;
 
