@@ -14,11 +14,15 @@
     <div class="text-center mb-4">
         <img src="/img/lazy.png" alt="..." style="width: 200px; height: 200px">
         <h1 class="mb-4 mt-4">Lazybones Recipes</h1>
+
             <form class="form-inline d-block" action="#" th:action="@{/index}" th:object="${search}" method="post">
-                <input class="form-control mr-sm-2" type="text" th:field="*{content}">
+                <input class="form-control mr-sm-2" type="text" placeholder="Leave empty for everything." th:field="*{content}">
                 <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
                     <!--<input type="reset" value="Reset" /></p>-->
-                </input>
+
+
+
+
             </form>
     </div>
     <!--

@@ -4,11 +4,11 @@ import hbv501g.ProjectOne.Entities.Recipe;
 import hbv501g.ProjectOne.Entities.SearchModel;
 import hbv501g.ProjectOne.Repositories.RecipeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
-
 public class RecipeService {
 
     private ArrayList<Recipe> allRecipes;

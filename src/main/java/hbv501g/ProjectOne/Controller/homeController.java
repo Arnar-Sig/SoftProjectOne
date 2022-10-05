@@ -11,12 +11,15 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.Optional;
 
 @Controller
 public class homeController {
 
     @Autowired
     private RecipeRepository recipes;
+
+
     @GetMapping("/")
     public String homePage(Model model) {
         // Temporarily adds all data to the model - Remove after implementing better solution
@@ -40,7 +43,7 @@ public class homeController {
         // Get all recipes
         Iterable<Recipe> iter = recipes.findAll();
         ArrayList<Recipe> allRecipes = new ArrayList<>();
-        for (Recipe r: iter) {
+        for (Recipe r : iter) {
             allRecipes.add(r);
         }
         // Filter according to search
@@ -86,10 +89,19 @@ public class homeController {
         }
 
 */
-
-
         model.addAttribute("all", filteredRecipes);
 
         return "recipePage";
+    }
+
+
+    @RequestMapping("/singleRecipePage")
+    public String hello(
+            @RequestParam(value="id",  defaultValue="1") Long id,
+            Model model) {
+        Optional<Recipe> recipesFromDB = recipes.findById(id);
+        Recipe r = recipesFromDB.get();
+        model.addAttribute("recipe", r);
+        return "singleRecipePage";
     }
 }
