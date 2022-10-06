@@ -16,7 +16,7 @@
   <div class="card-deck mx-auto">
     <div class="mx-auto d-flex">
       <div th:each="recipe: ${all}">
-        <div class="card" style="width: 18rem; height:18rem;">
+        <div class="card" style="width:18rem;">
           <a th:href="@{/singleRecipePage/?id={id}(id=${recipe.id})}">
             <!--<img src="/img/placeholder.jpg" class="card-img-top" alt="...">-->
             <img th:src="@{${'/img/' + recipe.id+'.jpg'}}" class="card-img-top" style="width: 100%; height: 15vw; object-fit: cover;" alt="..."/>
