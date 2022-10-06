@@ -20,7 +20,7 @@ public class homeController {
     private RecipeRepository recipes;
 
 
-    @GetMapping("/")
+    @GetMapping({"/", "/index"})
     public String homePage(Model model) {
         // Temporarily adds all data to the model - Remove after implementing better solution
 /*        Iterable<Recipe> iter = recipes.findAll();

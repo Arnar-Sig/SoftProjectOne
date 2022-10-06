@@ -15,7 +15,8 @@
 <div class="card-deck mx-auto">
   <div class="mx-auto d-flex">
       <div class="card" style="width: 18rem;">
-        <img src="/img/placeholder.jpg" class="card-img-top" alt="...">
+<!--        <img src="/img/placeholder.jpg" class="card-img-top" alt="...">-->
+        <img th:src="@{${'/img/' + recipe.id+'.jpg'}}" class="card-img-top" alt="..."/>
         <div class="card-body">
           <h5 class="card-title" th:text="${recipe.name}"></h5>
         </div>
