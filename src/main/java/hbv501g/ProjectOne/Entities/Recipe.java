@@ -4,7 +4,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import java.util.ArrayList;
 import java.util.HashSet;
 
 @Entity
@@ -29,8 +28,8 @@ public class Recipe {
 	public String getName() {
 		return name;
 	}
-
 	protected Recipe() {}
+
 	public Recipe(String name, HashSet<String> ingredients, String instructions) {
 		this.ingredients = ingredients;
 		this.instructions = instructions;
@@ -45,6 +44,4 @@ public class Recipe {
 				", instructions='" + instructions + '\'' +
 				'}';
 	}
-
-
 }

@@ -1,7 +1,5 @@
 package hbv501g.ProjectOne.Entities;
 
-import hbv501g.ProjectOne.Entities.Recipe;
-
 import java.util.ArrayList;
 
 public class SearchModel {

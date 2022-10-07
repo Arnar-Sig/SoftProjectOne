@@ -4,21 +4,15 @@
 <head>
   <meta charset="UTF-8">
   <title>Lazybones Recipes</title>
-  <!--
-      <link rel="stylesheet" href="/css/front.css" th:href="@{/css/front.css}">
-  -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
 </head>
 <body>
-<!--<p th:text="'id: ' + ${search.id}" />-->
-  <!--<p th:text="'Search parameter:: ' + ${search.content}" />-->
   <div class="card-deck mx-auto">
     <div class="mx-auto d-flex">
       <div th:each="recipe: ${all}">
         <div class="card" style="width:18rem;">
           <a th:href="@{/singleRecipePage/?id={id}(id=${recipe.id})}">
-            <!--<img src="/img/placeholder.jpg" class="card-img-top" alt="...">-->
             <img th:src="@{${'/img/' + recipe.id+'.jpg'}}" class="card-img-top" style="width: 100%; height: 15vw; object-fit: cover;" alt="..."/>
           </a>
           <div class="card-body">
@@ -34,7 +28,5 @@
       </div>
     </div>
   </div>
-
-
 </body>
 </html>
