@@ -20,7 +20,19 @@ public class RecipeServiceImplementation implements RecipeService {
         this.recipeRepository = recipeRepository;
     }
 
-    // Filter out recipes that do not match search parameters
+    /**
+     * Returns a list of Recipe objects that match the search parameter.
+     * If the search parameter is empty, it will return all recipes in
+     * the database.
+     * If the search parameter is a single word, it will look for
+     * recipes with the name of the search parameter.
+     * If the search parameter is multiple words it will look for
+     * recipes where all the ingredients are in the search parameter.
+     *
+     * @param search the search parameters used for filtering
+     * @return       a list of Recipe objects that match
+     *               the search parameters.
+     */
     public ArrayList<Recipe> filter(String search){
         ArrayList<Recipe> filteredRecipes = new ArrayList<>();
         ArrayList<Recipe> allRecipes = (ArrayList<Recipe>) recipeRepository.findAll();

@@ -14,12 +14,12 @@ import java.util.ArrayList;
 @Controller
 public class homeController {
     private RecipeService recipeService;
-
     @Autowired
     public homeController(RecipeService recipeService){
         this.recipeService = recipeService;
     }
 
+    /** Mapping of the front page. **/
     @GetMapping({"/", "/index"})
     public String homePage(Model model) {
         SearchModel sm = new SearchModel();
@@ -27,11 +27,11 @@ public class homeController {
         return "index";
     }
 
-    /**
-     *
-     * @param search
-     * @param model
-     * @return
+    /** Mapping of the search feature.
+     *  Happens when the search button is clicked.
+     *  The search-parameters are retrieved and the database is
+     *  queried for the recipes that match, which is then attached
+     *  to the model which is then sent to the html-template to be displayed.
      */
     @PostMapping("/index")
     public String searchSubmit(@ModelAttribute SearchModel search, Model model) {
@@ -40,10 +40,11 @@ public class homeController {
         return "recipePage";
     }
 
-    /** Link to a page with only a single recipe,
-     *  coming from a link like /singleRecipePage/?id=2
-     *
-     *
+    /** Link to a page with only a single recipe.
+     *  Retrieves the id parameter from the url, queries the
+     *  database for the recipe with the matching id and adds
+     *  it to the model. This model is then sent to the
+     *  html-template to be displayed.
      */
     @RequestMapping("/singleRecipePage")
     public String hello(@RequestParam(value="id",  defaultValue="1") Long id, Model model) {
