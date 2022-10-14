@@ -58,4 +58,20 @@ public class homeController {
         model.addAttribute("recipe", r);
         return "singleRecipePage";
     }
+
+    /**
+     * Mapping for login page.
+     */
+    @GetMapping("/loginPage")
+    public String loginPage(Model model) {
+        return "loginPage";
+    }
+
+    /**
+     * Mapping for signup page.
+     */
+    @GetMapping("/signUpPage")
+    public String signUpPage(Model model) {
+        return "signUpPage";
+    }
 }
