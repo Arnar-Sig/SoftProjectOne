@@ -74,21 +74,14 @@ public class userController {
 
     @RequestMapping(value = "/signUpPage", method = RequestMethod.POST)
     public String signupPOST(User user, BindingResult result, Model model){
-        System.out.println("Debug - userController line 74.");
         if(result.hasErrors()){
-            System.out.println("Debug - userController line 76.");
-            return "index";
+            return "redirect:/index";
         }
-        System.out.println("Debug - userController line 79.");
         User exists = userService.findByUsername(user.getUsername());
-        System.out.println("Debug - userController line 81.");
         if(exists == null){
-            System.out.println("Debug - userController line 83.");
             userService.save(user);
-            System.out.println("Debug - userController line 85.");
         }
-        System.out.println("Debug - userController line 87.");
-        return "loginPage";     // Finna út af hverju ég get ekki haft index hér í staðinn fyrir loginPage án þess að forritið krassi.
+        return "redirect:/index";
     }
 
 
