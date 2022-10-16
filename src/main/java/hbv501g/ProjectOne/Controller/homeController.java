@@ -2,6 +2,7 @@ package hbv501g.ProjectOne.Controller;
 
 import hbv501g.ProjectOne.Entities.Recipe;
 import hbv501g.ProjectOne.Entities.SearchModel;
+import hbv501g.ProjectOne.Entities.User;
 import hbv501g.ProjectOne.Services.RecipeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -9,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
+import java.util.List;
 
 
 @Controller
@@ -26,6 +28,7 @@ public class homeController {
         model.addAttribute("search", sm);
         return "index";
     }
+
 
     /** Mapping of the search feature.
      *  Happens when the search button is clicked.
@@ -59,19 +62,6 @@ public class homeController {
         return "singleRecipePage";
     }
 
-    /**
-     * Mapping for login page.
-     */
-    @GetMapping("/loginPage")
-    public String loginPage(Model model) {
-        return "loginPage";
-    }
 
-    /**
-     * Mapping for signup page.
-     */
-    @GetMapping("/signUpPage")
-    public String signUpPage(Model model) {
-        return "signUpPage";
-    }
+
 }
