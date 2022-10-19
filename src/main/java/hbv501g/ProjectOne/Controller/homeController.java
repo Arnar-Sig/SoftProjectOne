@@ -28,8 +28,7 @@ public class homeController {
         model.addAttribute("search", sm);
         return "index";
     }
-
-
+    
     /** Mapping of the search feature.
      *  Happens when the search button is clicked.
      *  The search-parameters are retrieved and the database is
@@ -61,7 +60,5 @@ public class homeController {
         model.addAttribute("recipe", r);
         return "singleRecipePage";
     }
-
-
 
 }

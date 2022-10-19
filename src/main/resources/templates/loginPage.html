@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="https://thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
@@ -39,16 +39,16 @@
       <div class="col-lg-8">
         <div class="card-body py-5 px-md-5">
 
-          <form>
+          <form action="#" th:action="@{/loginPage}" th:object="${user}" method="post">
             <!-- Email input -->
             <div class="form-outline mb-4">
-              <input type="email" id="form2Example1" class="form-control" />
-              <label class="form-label" for="form2Example1">Email address</label>
+              <input type="text" id="username" name="username" th:field="*{username}" class="form-control" />
+              <label class="form-label" for="form2Example1">Username</label>
             </div>
 
             <!-- Password input -->
             <div class="form-outline mb-4">
-              <input type="password" id="form2Example2" class="form-control" />
+              <input type="text" id="password" name="password" th:field="*{password}" class="form-control" />
               <label class="form-label" for="form2Example2">Password</label>
             </div>
 
@@ -69,7 +69,7 @@
             </div>
 
             <!-- Submit button -->
-            <button type="button" class="btn btn-primary btn-block mb-4">Sign in</button>
+            <input type="submit" value="Login" class="btn btn-primary btn-block mb-4"/>
 
           </form>
 

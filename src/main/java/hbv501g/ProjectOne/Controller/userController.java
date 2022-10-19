@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -28,9 +29,16 @@ public class userController {
      */
     @RequestMapping(value = "/loginPage", method = RequestMethod.GET)
     public String loginGET(User user){
-        System.out.println("Debug - prenta út all users og username þeirra.");
+
         System.out.println(userService.findAll());
         List<User> usernames = userService.findAll();
+        // Eyði öllum users.
+        //System.out.println("Debug - eyði öllum users.");
+        //for (int i = 0; i < (usernames.size()); i++) {
+        //    userService.delete(usernames.get(i));
+        //}
+        // Prenta út alla users.
+        System.out.println("Debug - prenta út all users og username þeirra.");
         for (int i = 0; i < (usernames.size()); i++) {System.out.println(usernames.get(i).getUsername());}
         return "loginPage";
     }
@@ -41,15 +49,13 @@ public class userController {
     @RequestMapping(value = "/loginPage", method = RequestMethod.POST)
     public String loginPOST(User user, BindingResult result, Model model, HttpSession session){
         if(result.hasErrors()){
-            System.out.println("Debug - userController line 38.");
             return "loginPage";
         }
         User exists = userService.login(user);
         if(exists != null){
-            //session.setAttribute("LoggedInUser", exists);
-            //model.addAttribute("LoggedInUser", exists);
-            //return "LoggedInUser";
-            System.out.println("Debug - userController line 45.");
+            session.setAttribute("LoggedInUser", exists);
+            model.addAttribute("LoggedInUser", exists);
+            return "LoggedInUser";
         }
         return "index";
     }
@@ -83,7 +89,4 @@ public class userController {
         }
         return "redirect:/index";
     }
-
-
-
 }
