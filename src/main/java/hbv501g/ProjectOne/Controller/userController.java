@@ -67,7 +67,7 @@ public class userController {
             model.addAttribute("LoggedInUser", sessionUser);
             return "loggedInUser";
         }
-        return "redirect:/";
+        return "redirect:/singleRecipePage";
     }
 
     /**
@@ -88,5 +88,25 @@ public class userController {
             userService.save(user);
         }
         return "redirect:/index";
+    }
+
+    /**
+     * Add to favourites.
+     */
+    @RequestMapping(value="/recipeSaved")
+    public String saveRecipeMethod(HttpSession session, Model model) {
+        User sessionUser = (User) session.getAttribute("LoggedInUser");
+        if(sessionUser  != null){
+            System.out.println("Debug - saveRecipeMethod - sessionUser != null");
+            System.out.println(model.getAttribute("user"));
+            System.out.println(sessionUser.getUsername());
+            model.addAttribute("LoggedInUser", sessionUser);
+            // Add recipe to favourites.
+            return "recipeSaved";
+        }
+        System.out.println("Debug - saveRecipeMethod - sessionUser = null");
+        return "redirect:/loginPage";
+
+
     }
 }
