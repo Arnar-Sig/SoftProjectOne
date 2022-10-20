@@ -1,12 +1,10 @@
 package hbv501g.ProjectOne.Entities;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.HashSet;
 
 @Entity
+@Table(name = "recipes")
 public class Recipe {
 
 	@Id
@@ -15,6 +13,18 @@ public class Recipe {
 	private HashSet<String> ingredients;
 	private String instructions;
 	private String name;
+
+
+	@ManyToOne(fetch = FetchType.LAZY)
+	private User user;
+	public User getUser() {
+		return user;
+	}
+	public void setUser(User user) {
+		this.user = user;
+	}
+
+
 
 	public HashSet<String> getIngredients() {
 		return ingredients;
