@@ -1,15 +1,14 @@
 package hbv501g.ProjectOne.Controller;
 
+import hbv501g.ProjectOne.Entities.Recipe;
 import hbv501g.ProjectOne.Entities.User;
+import hbv501g.ProjectOne.Services.RecipeService;
 import hbv501g.ProjectOne.Services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
 import java.util.List;
@@ -18,10 +17,12 @@ import java.util.List;
 public class userController {
 
     UserService userService;
+    RecipeService recipeService;
 
     @Autowired
-    public userController(UserService userService){
+    public userController(UserService userService, RecipeService recipeService){
         this.userService = userService;
+        this.recipeService = recipeService;
     }
 
     /**
@@ -94,7 +95,7 @@ public class userController {
      * Add to favourites.
      */
     @RequestMapping(value="/recipeSaved")
-    public String saveRecipeMethod(HttpSession session, Model model) {
+    public String saveRecipeMethod(HttpSession session, Model model, @RequestParam(value="id", defaultValue = "1") Long id){
         User sessionUser = (User) session.getAttribute("LoggedInUser");
         if(sessionUser  != null){
             System.out.println("Debug - saveRecipeMethod - sessionUser != null");
@@ -102,6 +103,12 @@ public class userController {
             System.out.println(sessionUser.getUsername());
             model.addAttribute("LoggedInUser", sessionUser);
             // Add recipe to favourites.
+            // Reyni að finna leið til að ná id.
+            System.out.println(id);
+            System.out.println(recipeService.findByID(id).get().getName());
+            System.out.println(model.getAttribute(id.toString()));
+            System.out.println(session.getId());
+
             return "recipeSaved";
         }
         System.out.println("Debug - saveRecipeMethod - sessionUser = null");

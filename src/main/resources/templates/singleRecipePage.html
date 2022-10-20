@@ -21,7 +21,7 @@
             <div class="card-body">
               <p class="card-text" th:text="${recipe.instructions}"></p>
             </div>
-              <button type="button" th:onclick="|window.location.href='/recipeSaved'|" th:object="${user}">Save Recipe</button>
+              <button type="button" th:onclick="|window.location.href='/recipeSaved'|" th:object="${model}">Save Recipe</button>
           </div>
       </div>
     </div>

@@ -51,6 +51,7 @@ public class homeController {
     @RequestMapping("/singleRecipePage")
     public String hello(@RequestParam(value="id",  defaultValue="1") Long id, Model model) {
         Recipe r;
+        System.out.println("Debug - id: " + id);
         try {
             r = recipeService.findByID(id).get();
         } catch (Exception e) {
