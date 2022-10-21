@@ -31,7 +31,7 @@ public class userController {
     @RequestMapping(value = "/loginPage", method = RequestMethod.GET)
     public String loginGET(User user){
 
-        System.out.println(userService.findAll());
+        //System.out.println(userService.findAll());
         List<User> usernames = userService.findAll();
         // Eyði öllum users.
         //System.out.println("Debug - eyði öllum users.");
@@ -39,7 +39,7 @@ public class userController {
         //    userService.delete(usernames.get(i));
         //}
         // Prenta út alla users.
-        System.out.println("Debug - prenta út all users og username þeirra.");
+        //System.out.println("Debug - prenta út all users og username þeirra.");
         for (int i = 0; i < (usernames.size()); i++) {System.out.println(usernames.get(i).getUsername());}
         return "loginPage";
     }
@@ -97,22 +97,22 @@ public class userController {
     @RequestMapping(value="/recipeSaved/{id}", method = RequestMethod.GET)
     public String saveRecipeMethod(@PathVariable("id") Long id, HttpSession session, Model model){
         User sessionUser = (User) session.getAttribute("LoggedInUser");
-        System.out.println("id clicked was: " + id);
         if(sessionUser  != null){
 /*            System.out.println("Debug - saveRecipeMethod - sessionUser != null");
             System.out.println(model.getAttribute("user"));
             System.out.println(sessionUser.getUsername());*/
             model.addAttribute("LoggedInUser", sessionUser);
             // Add recipe to favourites.
-            // Reyni að finna leið til að ná id.
 /*            System.out.println(id);
             System.out.println(recipeService.findByID(id).get().getName());
             System.out.println(model.getAttribute(id.toString()));
             System.out.println(session.getId());*/
+            String returnPage = "redirect:/singleRecipePage/" + String.valueOf((id));
+            System.out.println("Successfully saved a recipe!");
 
-            return "recipeSaved";
+            return returnPage;
         }
-        System.out.println("Debug - saveRecipeMethod - sessionUser = null");
+        //System.out.println("Debug - saveRecipeMethod - sessionUser = null");
         return "redirect:/loginPage";
     }
 }

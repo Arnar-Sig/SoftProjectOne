@@ -11,6 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.naming.directory.SearchResult;
+import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,7 +26,7 @@ public class homeController {
 
     /** Mapping of the front page. **/
     @GetMapping({"/", "/index"})
-    public String homePage(Model model) {
+    public String homePage(HttpSession session, Model model) {
         SearchModel sm = new SearchModel();
         model.addAttribute("search", sm);
         return "index";
@@ -38,7 +39,7 @@ public class homeController {
      *  to the model which is then sent to the html-template to be displayed.
      */
     @RequestMapping(value = "/recipePage", method = RequestMethod.POST)
-    public String SearchSubmitPOST(SearchModel search, Model model){
+    public String SearchSubmitPOST(SearchModel search, HttpSession session, Model model){
         ArrayList<Recipe> filteredRecipes = recipeService.filter(search.getContent());
         model.addAttribute("all", filteredRecipes);
         return "recipePage";
@@ -61,9 +62,13 @@ public class homeController {
      */
     // TODO: Error message or when id with no match.
     @RequestMapping(value = "/singleRecipePage/{id}", method = RequestMethod.GET)
-    public String viewSingleRecipe(@PathVariable("id") Long id, Model model) {
+    public String viewSingleRecipe(@PathVariable("id") Long id, HttpSession session, Model model) {
+        User currentUser = (User) session.getAttribute("LoggedInUser");
+        if(currentUser != null){
+            System.out.println("Currently logged in user:" + currentUser.getUsername());
+        }
         Recipe r;
-        System.out.println("Debug - id: " + id);
+        //System.out.println("Debug - id: " + id);
         try {
             r = recipeService.findByID(id).get();
         } catch (Exception e) {
@@ -88,8 +93,5 @@ public class homeController {
         model.addAttribute("recipe", r);
         return "singleRecipePage";
     }*/
-
-
-
 
 }
