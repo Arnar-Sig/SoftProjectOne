@@ -1,5 +1,6 @@
 package hbv501g.ProjectOne.Controller;
 
+import com.sun.xml.bind.v2.TODO;
 import hbv501g.ProjectOne.Entities.Recipe;
 import hbv501g.ProjectOne.Entities.SearchModel;
 import hbv501g.ProjectOne.Entities.User;
@@ -9,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import javax.naming.directory.SearchResult;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -35,12 +37,21 @@ public class homeController {
      *  queried for the recipes that match, which is then attached
      *  to the model which is then sent to the html-template to be displayed.
      */
+    @RequestMapping(value = "/recipePage", method = RequestMethod.POST)
+    public String SearchSubmitPOST(SearchModel search, Model model){
+        ArrayList<Recipe> filteredRecipes = recipeService.filter(search.getContent());
+        model.addAttribute("all", filteredRecipes);
+        return "recipePage";
+    }
+    /* OLD
     @PostMapping("/index")
     public String searchSubmit(@ModelAttribute SearchModel search, Model model) {
         ArrayList<Recipe> filteredRecipes = recipeService.filter(search.getContent());
         model.addAttribute("all", filteredRecipes);
         return "recipePage";
-    }
+    }*/
+
+
 
     /** Link to a page with only a single recipe.
      *  Retrieves the id parameter from the url, queries the
@@ -48,6 +59,22 @@ public class homeController {
      *  it to the model. This model is then sent to the
      *  html-template to be displayed.
      */
+    // TODO: Error message when id with no match.
+    @RequestMapping(value = "/singleRecipePage/{id}", method = RequestMethod.GET)
+    public String viewSingleRecipe(@PathVariable("id") Long id, Model model) {
+        Recipe r;
+        System.out.println("Debug - id: " + id);
+        try {
+            r = recipeService.findByID(id).get();
+        } catch (Exception e) {
+            r = recipeService.findByID(1L).get();
+            throw new RuntimeException(e);
+        }
+        model.addAttribute("recipe", r);
+        return "singleRecipePage";
+    }
+
+    /* OLD
     @RequestMapping("/singleRecipePage")
     public String hello(@RequestParam(value="id",  defaultValue="1") Long id, Model model) {
         Recipe r;
@@ -60,6 +87,9 @@ public class homeController {
         }
         model.addAttribute("recipe", r);
         return "singleRecipePage";
-    }
+    }*/
+
+
+
 
 }
