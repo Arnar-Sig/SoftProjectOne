@@ -29,7 +29,7 @@ public class userController {
      * Mapping for login page.
      */
     @RequestMapping(value = "/loginPage", method = RequestMethod.GET)
-    public String loginGET(User user){
+    public String loginGET(User user, HttpSession session){
 
         //System.out.println(userService.findAll());
         List<User> usernames = userService.findAll();
@@ -54,9 +54,10 @@ public class userController {
         }
         User exists = userService.login(user);
         if(exists != null){
-            session.setAttribute("LoggedInUser", exists);
+            session.setAttribute("LoggedInUser", exists.getUsername());
             model.addAttribute("LoggedInUser", exists);
-            return "LoggedInUser";
+            return "redirect:/index";
+            //return "LoggedInUser";
         }
         return "index";
     }
@@ -75,18 +76,19 @@ public class userController {
      * Mapping for signup page.
      */
     @RequestMapping(value = "/signUpPage", method = RequestMethod.GET)
-    public String signupGET(User user){
+    public String signupGET(User user, HttpSession session){
         return "signUpPage";
     }
 
     @RequestMapping(value = "/signUpPage", method = RequestMethod.POST)
-    public String signupPOST(User user, BindingResult result, Model model){
+    public String signupPOST(User user, HttpSession session, BindingResult result, Model model){
         if(result.hasErrors()){
             return "redirect:/index";
         }
         User exists = userService.findByUsername(user.getUsername());
         if(exists == null){
             userService.save(user);
+            session.setAttribute("LoggedInUser", user.getUsername());
         }
         return "redirect:/index";
     }
@@ -96,12 +98,12 @@ public class userController {
      */
     @RequestMapping(value="/recipeSaved/{id}", method = RequestMethod.GET)
     public String saveRecipeMethod(@PathVariable("id") Long id, HttpSession session, Model model){
-        User sessionUser = (User) session.getAttribute("LoggedInUser");
-        if(sessionUser  != null){
+        String sessionUser = (String) session.getAttribute("LoggedInUser");
+        if(sessionUser != null){
 /*            System.out.println("Debug - saveRecipeMethod - sessionUser != null");
             System.out.println(model.getAttribute("user"));
             System.out.println(sessionUser.getUsername());*/
-            model.addAttribute("LoggedInUser", sessionUser);
+            //model.addAttribute("LoggedInUser", sessionUser);
             // Add recipe to favourites.
 /*            System.out.println(id);
             System.out.println(recipeService.findByID(id).get().getName());
@@ -109,7 +111,6 @@ public class userController {
             System.out.println(session.getId());*/
             String returnPage = "redirect:/singleRecipePage/" + String.valueOf((id));
             System.out.println("Successfully saved a recipe!");
-
             return returnPage;
         }
         //System.out.println("Debug - saveRecipeMethod - sessionUser = null");

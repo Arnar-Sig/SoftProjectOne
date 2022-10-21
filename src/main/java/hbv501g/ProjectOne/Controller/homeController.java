@@ -27,6 +27,7 @@ public class homeController {
     /** Mapping of the front page. **/
     @GetMapping({"/", "/index"})
     public String homePage(HttpSession session, Model model) {
+
         SearchModel sm = new SearchModel();
         model.addAttribute("search", sm);
         return "index";
@@ -40,9 +41,9 @@ public class homeController {
      */
     @RequestMapping(value = "/recipePage", method = RequestMethod.POST)
     public String SearchSubmitPOST(SearchModel search, HttpSession session, Model model){
-        ArrayList<Recipe> filteredRecipes = recipeService.filter(search.getContent());
-        model.addAttribute("all", filteredRecipes);
+        model.addAttribute("all", recipeService.filter(search.getContent()));
         return "recipePage";
+
     }
     /* OLD
     @PostMapping("/index")
@@ -63,9 +64,9 @@ public class homeController {
     // TODO: Error message or when id with no match.
     @RequestMapping(value = "/singleRecipePage/{id}", method = RequestMethod.GET)
     public String viewSingleRecipe(@PathVariable("id") Long id, HttpSession session, Model model) {
-        User currentUser = (User) session.getAttribute("LoggedInUser");
+        String currentUser = String.valueOf(session.getAttribute("LoggedInUser"));
         if(currentUser != null){
-            System.out.println("Currently logged in user:" + currentUser.getUsername());
+            System.out.println("Currently logged in user:" + currentUser);
         }
         Recipe r;
         //System.out.println("Debug - id: " + id);
