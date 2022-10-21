@@ -94,26 +94,25 @@ public class userController {
     /**
      * Add to favourites.
      */
-    @RequestMapping(value="/recipeSaved")
-    public String saveRecipeMethod(HttpSession session, Model model, @RequestParam(value="id", defaultValue = "1") Long id){
+    @RequestMapping(value="/recipeSaved/{id}", method = RequestMethod.GET)
+    public String saveRecipeMethod(@PathVariable("id") Long id, HttpSession session, Model model){
         User sessionUser = (User) session.getAttribute("LoggedInUser");
+        System.out.println("id clicked was: " + id);
         if(sessionUser  != null){
-            System.out.println("Debug - saveRecipeMethod - sessionUser != null");
+/*            System.out.println("Debug - saveRecipeMethod - sessionUser != null");
             System.out.println(model.getAttribute("user"));
-            System.out.println(sessionUser.getUsername());
+            System.out.println(sessionUser.getUsername());*/
             model.addAttribute("LoggedInUser", sessionUser);
             // Add recipe to favourites.
             // Reyni að finna leið til að ná id.
-            System.out.println(id);
+/*            System.out.println(id);
             System.out.println(recipeService.findByID(id).get().getName());
             System.out.println(model.getAttribute(id.toString()));
-            System.out.println(session.getId());
+            System.out.println(session.getId());*/
 
             return "recipeSaved";
         }
         System.out.println("Debug - saveRecipeMethod - sessionUser = null");
         return "redirect:/loginPage";
-
-
     }
 }

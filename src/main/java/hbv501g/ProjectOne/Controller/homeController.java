@@ -59,7 +59,7 @@ public class homeController {
      *  it to the model. This model is then sent to the
      *  html-template to be displayed.
      */
-    // TODO: Error message when id with no match.
+    // TODO: Error message or when id with no match.
     @RequestMapping(value = "/singleRecipePage/{id}", method = RequestMethod.GET)
     public String viewSingleRecipe(@PathVariable("id") Long id, Model model) {
         Recipe r;
