@@ -27,7 +27,8 @@ public class RecipeServiceImplementation implements RecipeService {
      * If the search parameter is a single word, it will look for
      * recipes with the name of the search parameter.
      * If the search parameter is multiple words it will look for
-     * recipes where all the ingredients are in the search parameter.
+     * recipes where all the ingredients match a word in the search
+     * parameter.
      *
      * @param search the search parameters used for filtering
      * @return       a list of Recipe objects that match

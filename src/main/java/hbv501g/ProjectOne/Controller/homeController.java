@@ -5,6 +5,7 @@ import hbv501g.ProjectOne.Entities.Recipe;
 import hbv501g.ProjectOne.Entities.SearchModel;
 import hbv501g.ProjectOne.Entities.User;
 import hbv501g.ProjectOne.Services.RecipeService;
+import hbv501g.ProjectOne.Services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,9 +20,11 @@ import java.util.List;
 @Controller
 public class homeController {
     private RecipeService recipeService;
+    private UserService userService;
     @Autowired
-    public homeController(RecipeService recipeService){
+    public homeController(RecipeService recipeService, UserService userService){
         this.recipeService = recipeService;
+        this.userService = userService;
     }
 
     /** Mapping of the front page. **/
@@ -68,7 +71,7 @@ public class homeController {
         if(currentUser != null){
             System.out.println("Currently logged in user:" + currentUser);
         }
-/*        Recipe r;
+    /*        Recipe r;
         //System.out.println("Debug - id: " + id);
         try {
             r = recipeService.findByID(id).get();
@@ -77,10 +80,11 @@ public class homeController {
             throw new RuntimeException(e);
         }*/
         /*model.addAttribute("recipe", r);*/
+        model.addAttribute("isFavorited", userService.findByUsername(currentUser).
+                getFavoriteRecipes().contains(id));
         model.addAttribute("recipe", recipeService.findByID(id).get());
         return "singleRecipePage";
     }
-
     /* OLD
     @RequestMapping("/singleRecipePage")
     public String hello(@RequestParam(value="id",  defaultValue="1") Long id, Model model) {

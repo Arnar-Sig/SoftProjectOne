@@ -12,4 +12,5 @@ public interface UserService {
     User findByUsername(String username);
     User login(User user);
     HashSet<Long> addToFavorites(User user, Long id);
+    Boolean isFavorited(User user, Long id);
 }

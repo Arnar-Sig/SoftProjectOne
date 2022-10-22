@@ -62,4 +62,12 @@ public class UserServiceImplementation implements UserService {
     }
 
 
+
+    @Override
+    public Boolean isFavorited(User user, Long id) {
+        HashSet<Long> fav = user.getFavoriteRecipes();
+        return fav.contains(id);
+    }
+
+
 }

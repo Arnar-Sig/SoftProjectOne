@@ -8,6 +8,9 @@
 
 </head>
 <body>
+    <div th:if="${isFavorited == false}">
+        <p>It's not favorited!</p>
+    </div>
     <div class="card-deck mx-auto">
       <div class="mx-auto d-flex">
           <div class="card" style="width: 18rem;">
