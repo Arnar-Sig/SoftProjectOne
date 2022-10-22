@@ -85,6 +85,10 @@ public class RecipeServiceImplementation implements RecipeService {
     }
     @Override
     public Optional<Recipe> findByID(Long id){
-        return recipeRepository.findById(id);
+        try {
+            return recipeRepository.findById(id);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
     }
 }

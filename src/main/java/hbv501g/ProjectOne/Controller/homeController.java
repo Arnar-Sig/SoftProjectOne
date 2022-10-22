@@ -68,15 +68,16 @@ public class homeController {
         if(currentUser != null){
             System.out.println("Currently logged in user:" + currentUser);
         }
-        Recipe r;
+/*        Recipe r;
         //System.out.println("Debug - id: " + id);
         try {
             r = recipeService.findByID(id).get();
         } catch (Exception e) {
             r = recipeService.findByID(1L).get();
             throw new RuntimeException(e);
-        }
-        model.addAttribute("recipe", r);
+        }*/
+        /*model.addAttribute("recipe", r);*/
+        model.addAttribute("recipe", recipeService.findByID(id).get());
         return "singleRecipePage";
     }
 

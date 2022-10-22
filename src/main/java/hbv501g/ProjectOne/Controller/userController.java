@@ -44,9 +44,6 @@ public class userController {
         return "loginPage";
     }
 
-
-
-
     @RequestMapping(value = "/loginPage", method = RequestMethod.POST)
     public String loginPOST(User user, BindingResult result, Model model, HttpSession session){
         if(result.hasErrors()){
@@ -100,18 +97,26 @@ public class userController {
     public String saveRecipeMethod(@PathVariable("id") Long id, HttpSession session, Model model){
         String sessionUser = (String) session.getAttribute("LoggedInUser");
         if(sessionUser != null){
-/*            System.out.println("Debug - saveRecipeMethod - sessionUser != null");
+            /*            System.out.println("Debug - saveRecipeMethod - sessionUser != null");
             System.out.println(model.getAttribute("user"));
             System.out.println(sessionUser.getUsername());*/
             //model.addAttribute("LoggedInUser", sessionUser);
             // Add recipe to favourites.
-/*            System.out.println(id);
+            /*            System.out.println(id);
             System.out.println(recipeService.findByID(id).get().getName());
             System.out.println(model.getAttribute(id.toString()));
             System.out.println(session.getId());*/
+            //User currentUser = userService.findByUsername(sessionUser);
+            userService.addToFavorites(userService.findByUsername(sessionUser), id);
+            /*
+            currentUser.addToFavoriteRecipes(id);
+            userService.save(currentUser);
+            */
+
             String returnPage = "redirect:/singleRecipePage/" + String.valueOf((id));
             System.out.println("Successfully saved a recipe!");
             return returnPage;
+
         }
         //System.out.println("Debug - saveRecipeMethod - sessionUser = null");
         return "redirect:/loginPage";

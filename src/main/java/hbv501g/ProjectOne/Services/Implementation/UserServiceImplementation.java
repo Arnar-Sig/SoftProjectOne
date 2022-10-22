@@ -6,6 +6,7 @@ import hbv501g.ProjectOne.Services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.HashSet;
 import java.util.List;
 
 @Service
@@ -45,6 +46,17 @@ public class UserServiceImplementation implements UserService {
             if(doesExist.getPassword().equals(user.getPassword())){
                 return doesExist;
             }
+        }
+        return null;
+    }
+
+    @Override
+    public HashSet<Long> addToFavorites(User user, Long id) {
+        user.addToFavoriteRecipes(id);
+        save(user);
+
+        for (Long i:user.getFavoriteRecipes()) {
+            System.out.println(i);
         }
         return null;
     }

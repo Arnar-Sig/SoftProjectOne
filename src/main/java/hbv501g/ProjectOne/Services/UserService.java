@@ -2,6 +2,7 @@ package hbv501g.ProjectOne.Services;
 
 import hbv501g.ProjectOne.Entities.User;
 
+import java.util.HashSet;
 import java.util.List;
 
 public interface UserService {
@@ -10,4 +11,5 @@ public interface UserService {
     List<User> findAll();
     User findByUsername(String username);
     User login(User user);
+    HashSet<Long> addToFavorites(User user, Long id);
 }
