@@ -8,9 +8,6 @@
 
 </head>
 <body>
-    <div th:if="${isFavorited == false}">
-        <p>It's not favorited!</p>
-    </div>
     <div class="card-deck mx-auto">
       <div class="mx-auto d-flex">
           <div class="card" style="width: 18rem;">
@@ -24,11 +21,31 @@
             <div class="card-body">
               <p class="card-text" th:text="${recipe.instructions}"></p>
             </div>
-              <a th:href="@{/recipeSaved/{id}(id=${recipe.id})}">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="button">
-                  Save Recipe
-                </button>
-              </a>
+              <div th:switch="${isFavorited}">
+                  <div th:case="false">
+                      <a th:href="@{/recipeSaved/{id}(id=${recipe.id})}">
+                          <button class="btn btn-outline-success my-2 my-sm-0" type="button">
+                              Save Recipe
+                          </button>
+                      </a>
+                  </div>
+                  <div th:case="true">
+                      <!-- TODO ADD A MAPPING TO THE DELETE FROM FAVORITES BUTTON -->
+                      <a th:href="@{/deleteSaved/{id}(id=${recipe.id})}">
+                          <button class="btn btn-outline-danger my-2 my-sm-0" type="button">
+                              Remove Recipe
+                          </button>
+                      </a>
+                  </div>
+              </div>
+
+              <!--<div th:if="${isFavorited == false}">
+                  <a th:href="@{/recipeSaved/{id}(id=${recipe.id})}">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="button">
+                      Save Recipe
+                    </button>
+                  </a>
+              </div>-->
               <!--<button type="button" th:onclick="|window.location.href='/recipeSaved'|" th:object="${model}">Save Recipe</button>-->
           </div>
       </div>
