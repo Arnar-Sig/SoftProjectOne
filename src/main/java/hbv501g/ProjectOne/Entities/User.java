@@ -22,7 +22,7 @@ public class User {
     public User(String username, String password){
         this.username = username;
         this.password = password;
-
+        favoriteRecipes = new HashSet<>();
     }
     public long getID() {
         return ID;
@@ -43,6 +43,9 @@ public class User {
         this.password = password;
     }
     public HashSet<Long> getFavoriteRecipes() {
+        if(favoriteRecipes == null){
+            favoriteRecipes = new HashSet<>();
+        }
         return favoriteRecipes;
     }
     public void setFavoriteRecipes(HashSet<Long> favoriteRecipes) {
