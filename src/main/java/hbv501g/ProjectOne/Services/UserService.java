@@ -13,4 +13,5 @@ public interface UserService {
     User login(User user);
     HashSet<Long> addToFavorites(User user, Long id);
     Boolean isFavorited(User user, Long id);
+    HashSet<Long> removeFromFavourites(User user, Long id);
 }

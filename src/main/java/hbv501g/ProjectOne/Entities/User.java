@@ -58,6 +58,10 @@ public class User {
         }
         favoriteRecipes.add(id);
     }
+
+    public void removeFromFavouriteRecipes(Long id) {
+        favoriteRecipes.remove(id);
+    }
 }
 
 

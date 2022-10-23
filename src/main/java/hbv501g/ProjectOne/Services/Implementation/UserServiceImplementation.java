@@ -72,5 +72,16 @@ public class UserServiceImplementation implements UserService {
         return fav.contains(id);
     }
 
+    @Override
+    public HashSet<Long> removeFromFavourites(User user, Long id) {
+        user.removeFromFavouriteRecipes(id);
+        save(user);
+
+        for (Long i:user.getFavoriteRecipes()) {
+            System.out.println(i);
+        }
+        return null;
+    }
+
 
 }

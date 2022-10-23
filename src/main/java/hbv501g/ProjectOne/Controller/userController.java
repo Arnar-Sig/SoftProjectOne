@@ -121,4 +121,15 @@ public class userController {
         //System.out.println("Debug - saveRecipeMethod - sessionUser = null");
         return "redirect:/loginPage";
     }
+
+    @RequestMapping(value="/deleteSaved/{id}", method = RequestMethod.GET)
+    public String removeRecipeFromFavMethod(@PathVariable("id") Long id, HttpSession session, Model model) {
+        String sessionUser = (String) session.getAttribute("LoggedInUser");
+        userService.removeFromFavourites(userService.findByUsername(sessionUser), id);
+
+
+        String returnPage = "redirect:/singleRecipePage/" + String.valueOf((id));
+        System.out.println("Debug - takki virkaði!");
+        return returnPage;
+    }
 }
