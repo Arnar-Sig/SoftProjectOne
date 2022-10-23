@@ -5,9 +5,15 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 
+/**
+ * User object. Contains information pertaining to a particular user.
+ */
 @Entity
 @Table(name = "users")
 public class User {
+    /**
+     * Variables.
+     */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long ID;
@@ -18,12 +24,25 @@ public class User {
     //@OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     private HashSet<Long> favoriteRecipes;
 
+    /**
+     * Constructor without arguments.
+     */
     public User(){}
+
+    /**
+     * Constructor with arguments.
+     * @param username - Name of the user.
+     * @param password - Password of the user.
+     */
     public User(String username, String password){
         this.username = username;
         this.password = password;
         favoriteRecipes = new HashSet<>();
     }
+
+    /**
+     * Getters and setters.
+     */
     public long getID() {
         return ID;
     }
@@ -52,6 +71,10 @@ public class User {
         this.favoriteRecipes = favoriteRecipes;
     }
 
+    /**
+     * Adds a recipe to a user's list of favourite recipes.
+     * @param id - Id of recipe to be added to the user's list of favourite recipes.
+     */
     public void addToFavoriteRecipes(Long id) {
         if(favoriteRecipes == null){
             favoriteRecipes = new HashSet<>();
@@ -59,6 +82,10 @@ public class User {
         favoriteRecipes.add(id);
     }
 
+    /**
+     * Removes a recipe from a user's list of favourite recipes.
+     * @param id - Id of recipe to be added to the user's list of favourite recipes.
+     */
     public void removeFromFavouriteRecipes(Long id) {
         favoriteRecipes.remove(id);
     }
