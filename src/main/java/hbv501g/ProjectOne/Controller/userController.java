@@ -13,12 +13,22 @@ import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpSession;
 import java.util.List;
 
+/**
+ * Controller class for all aspects of the website related to the user.
+ */
 @Controller
 public class userController {
-
+    /**
+     * Variables.
+     */
     UserService userService;
     RecipeService recipeService;
 
+    /**
+     * Constructor for the homeController.
+     * @param recipeService - The recipe service which is used to manage the recipes.
+     * @param userService - The user service which is used to manage the users.
+     */
     @Autowired
     public userController(UserService userService, RecipeService recipeService){
         this.userService = userService;
@@ -26,7 +36,10 @@ public class userController {
     }
 
     /**
-     * Mapping for login page.
+     * Mapping of the login page.
+     * @param session - A HttpSession object, used to get information about the current session.
+     * @param user - The user to be logged in.
+     * @return - Returns a String containing the name of the template to be displayed (loginPage.html for this method).
      */
     @RequestMapping(value = "/loginPage", method = RequestMethod.GET)
     public String loginGET(User user, HttpSession session){
@@ -44,6 +57,14 @@ public class userController {
         return "loginPage";
     }
 
+    /**
+     *
+     * @param user - User to be logged in.
+     * @param result - BindingResult hlutur til þess að grípa villur.
+     * @param model - The model currently being used.
+     * @param session - A HttpSession object, used to get information about the current session.
+     * @return - A string containing the name of the template to be displayed.
+     */
     @RequestMapping(value = "/loginPage", method = RequestMethod.POST)
     public String loginPOST(User user, BindingResult result, Model model, HttpSession session){
         if(result.hasErrors()){
@@ -59,6 +80,12 @@ public class userController {
         return "index";
     }
 
+    /**
+     *
+     * @param session - A HttpSession object, used to get information about the current session.
+     * @param model - The model currently being used.
+     * @return - A string containing the name of the template to be displayed.
+     */
     @RequestMapping(value = "/loggedin", method = RequestMethod.GET)
     public String loggedinGET(HttpSession session, Model model){
         User sessionUser = (User) session.getAttribute("LoggedInUser");
@@ -70,13 +97,24 @@ public class userController {
     }
 
     /**
-     * Mapping for signup page.
+     * Mapping for the signup page.
+     * @param user - User to be created.
+     * @param session - A HttpSession object, used to get information about the current session.
+     * @return - A string containing the name of the template to be displayed.
      */
     @RequestMapping(value = "/signUpPage", method = RequestMethod.GET)
     public String signupGET(User user, HttpSession session){
         return "signUpPage";
     }
 
+    /**
+     *
+     * @param user - User to be created.
+     * @param session - A HttpSession object, used to get information about the current session.
+     * @param result - BindingResult hlutur til þess að grípa villur.
+     * @param model - The model currently being used.
+     * @return
+     */
     @RequestMapping(value = "/signUpPage", method = RequestMethod.POST)
     public String signupPOST(User user, HttpSession session, BindingResult result, Model model){
         if(result.hasErrors()){
@@ -91,7 +129,11 @@ public class userController {
     }
 
     /**
-     * Add to favourites.
+     * Adds recipe to a user's list of favourites.
+     * @param id - The id of the recipe to be added to the user's list of favourite recipes.
+     * @param session - A HttpSession object, used to get information about the current session.
+     * @param model - The model currently being used.
+     * @return - A string containing the name of the template to be displayed.
      */
     @RequestMapping(value="/recipeSaved/{id}", method = RequestMethod.GET)
     public String saveRecipeMethod(@PathVariable("id") Long id, HttpSession session, Model model){
@@ -122,6 +164,13 @@ public class userController {
         return "redirect:/loginPage";
     }
 
+    /**
+     * Deletes a recipe from a user's list of favourite recipes.
+     * @param id - The id of the recipe to be added to the user's list of favourite recipes.
+     * @param session - A HttpSession object, used to get information about the current session.
+     * @param model - The model currently being used.
+     * @return - A string containing the name of the template to be displayed.
+     */
     @RequestMapping(value="/deleteSaved/{id}", method = RequestMethod.GET)
     public String removeRecipeFromFavMethod(@PathVariable("id") Long id, HttpSession session, Model model) {
         String sessionUser = (String) session.getAttribute("LoggedInUser");
