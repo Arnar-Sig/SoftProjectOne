@@ -11,10 +11,19 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Optional;
 
+/**
+ * Implementation of the RecipeService.
+ */
 @Service
 public class RecipeServiceImplementation implements RecipeService {
+    /**
+     * Variables.
+     */
     private RecipeRepository recipeRepository;
 
+    /**
+     * Constructor.
+     */
     @Autowired
     public RecipeServiceImplementation(RecipeRepository recipeRepository) {
         this.recipeRepository = recipeRepository;
@@ -84,6 +93,12 @@ public class RecipeServiceImplementation implements RecipeService {
         }
         return filteredRecipes;
     }
+
+    /**
+     * Finds and returns a Recipe from its id.
+     * @param id - Id of the recipe.
+     * @return - Recipe.
+     */
     @Override
     public Optional<Recipe> findByID(Long id){
         try {
