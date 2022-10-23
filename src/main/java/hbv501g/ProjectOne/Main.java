@@ -11,15 +11,23 @@ import org.springframework.context.annotation.Bean;
 
 import java.util.HashSet;
 
+/**
+ * Main class of SoftProjectOne, or the project for the class HBV1.
+ */
 @SpringBootApplication
 public class Main {
-
+	/**
+	 * Variables.
+	 */
 	private RecipeRepository repo;
 	private static final Logger log = LoggerFactory.getLogger(Main.class);
 	public static void main(String[] args) {
 		SpringApplication.run(Main.class);
 	}
 
+	/**
+	 * Temporary code for adding recipes to the database.
+	 */
 /*
 	// ONLY USE TO ADD NEW RECIPES //
 	@Bean
