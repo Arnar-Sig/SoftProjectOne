@@ -11,6 +11,8 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 
 /**
@@ -182,10 +184,29 @@ public class userController {
         return returnPage;
     }
 
-    @RequestMapping(value = "/user", method=RequestMethod.GET)
-    public String userGet(User user, HttpSession session) {
+    /**
+     * Displays a recipe from the user's list of favourite recipes.
+     * @param id - The position in the user's list of favourite recipes of the recipe to be displayed.
+     * @param session - A HttpSession object, used to get information about the current session.
+     * @param model - The model currently being used.
+     * @return - A string containing the name of the template to be displayed.
+     */
+    @RequestMapping(value = "/user/{id}", method=RequestMethod.GET)
+    public String userGet(@PathVariable("id") Long id, HttpSession session, Model model) {
         String sessionUser = (String) session.getAttribute("LoggedInUser");
         if(sessionUser != null){
+            HashSet<Long> favouriteRecipes = userService.findByUsername(sessionUser).getFavoriteRecipes();
+
+            System.out.println("DEBUG - id: " + id);
+
+            int index = 1;
+            for (Long i : favouriteRecipes) {
+                if (index == id) {
+                    return "redirect:/singleRecipePage/" + String.valueOf(i);
+                }
+                index++;
+            }
+
             return "user";
         }
         return "logInPrompt";
