@@ -181,4 +181,13 @@ public class userController {
         System.out.println("Debug - takki virkaði!");
         return returnPage;
     }
+
+    @RequestMapping(value = "/user", method=RequestMethod.GET)
+    public String userGet(User user, HttpSession session) {
+        String sessionUser = (String) session.getAttribute("LoggedInUser");
+        if(sessionUser != null){
+            return "user";
+        }
+        return "logInPrompt";
+    }
 }

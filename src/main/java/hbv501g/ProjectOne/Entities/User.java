@@ -1,6 +1,10 @@
 package hbv501g.ProjectOne.Entities;
 
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+
 import javax.persistence.*;
+import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -89,6 +93,5 @@ public class User {
     public void removeFromFavouriteRecipes(Long id) {
         favoriteRecipes.remove(id);
     }
+
 }
-
-
