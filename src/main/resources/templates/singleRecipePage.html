@@ -38,6 +38,15 @@
                       </a>
                   </div>
               </div>
+              <ul class="list-group list-group-flush" th:each="comment: ${recipe.comments}">
+                  <li class="list-group-item" th:text="${comment}"></li>
+              </ul>
+              <div class="card-body">
+                  <form action="postComment" method="POST">
+                      Comment: <textarea id="comment" value=" " name="comment"></textarea>
+                      <input type="submit" name="Submit" value="Submit">
+                  </form>
+              </div>
 
               <!--<div th:if="${isFavorited == false}">
                   <a th:href="@{/recipeSaved/{id}(id=${recipe.id})}">
