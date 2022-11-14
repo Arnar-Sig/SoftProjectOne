@@ -64,9 +64,14 @@ public class Recipe {
 		this.comments = comments;
 	}
 
-	public void AddComment(Recipe recipe, String comment) {
-		recipe.comments.add(comment);
+	/**
+	 * 	Í VINNSLU
+	 * @param comment
+	 */
+	public void AddComment(String comment) {
+		comments.add(comment);
 	}
+
 
 	/**
 	 * Describes the recipe in String format.

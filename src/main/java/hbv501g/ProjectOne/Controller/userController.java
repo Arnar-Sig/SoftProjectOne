@@ -211,4 +211,26 @@ public class userController {
         }
         return "logInPrompt";
     }
+
+    /**
+     * Í VINNSLU
+     * @param id
+     * @param session
+     * @param model
+     * @return
+     */
+    @RequestMapping(value="/addComment/{id}", method = RequestMethod.GET)
+    public String addComment(@PathVariable("id") Long id, HttpSession session, Model model){
+        String sessionUser = (String) session.getAttribute("LoggedInUser");
+        if(sessionUser != null){
+
+            String returnPage = "redirect:/singleRecipePage/" + String.valueOf((id));
+            System.out.println("commented");
+            return returnPage;
+
+        }
+        //System.out.println("Debug - saveRecipeMethod - sessionUser = null");
+        return "redirect:/loginPage";
+    }
+
 }
