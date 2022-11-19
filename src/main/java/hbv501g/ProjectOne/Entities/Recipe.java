@@ -18,9 +18,11 @@ public class Recipe {
 	private HashSet<String> ingredients;
 	private String instructions;
 	private String name;
-
 	@ManyToOne(fetch = FetchType.LAZY)
 	private User user;
+	private HashSet<Double> ratings;	// Contains individual ratings.
+	private HashSet<String> raters; 	// Contains usernames of those who have rated.
+	private Double rating;	// Recipe's rating. Average of ratings.
 
 	/**
 	 * Getters and setters.
