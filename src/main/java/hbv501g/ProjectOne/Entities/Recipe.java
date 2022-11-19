@@ -60,6 +60,7 @@ public class Recipe {
 		this.ingredients = ingredients;
 		this.instructions = instructions;
 		this.name = name;
+		this.rating = 5.0;	// Temp
 	}
 
 	/**
