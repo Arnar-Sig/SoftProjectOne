@@ -1,6 +1,7 @@
 package hbv501g.ProjectOne.Controller;
 
 import com.sun.xml.bind.v2.TODO;
+import hbv501g.ProjectOne.Entities.Rating;
 import hbv501g.ProjectOne.Entities.Recipe;
 import hbv501g.ProjectOne.Entities.SearchModel;
 import hbv501g.ProjectOne.Entities.User;
@@ -49,6 +50,8 @@ public class homeController {
 
         SearchModel sm = new SearchModel();
         model.addAttribute("search", sm);
+        Rating rating = new Rating();
+        model.addAttribute("rating", rating);
         return "index";
     }
 

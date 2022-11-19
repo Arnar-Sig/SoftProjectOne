@@ -1,5 +1,6 @@
 package hbv501g.ProjectOne.Controller;
 
+import hbv501g.ProjectOne.Entities.Rating;
 import hbv501g.ProjectOne.Entities.Recipe;
 import hbv501g.ProjectOne.Entities.User;
 import hbv501g.ProjectOne.Services.RecipeService;
@@ -210,5 +211,15 @@ public class userController {
             return "user";
         }
         return "logInPrompt";
+    }
+
+    @RequestMapping(value = "/singleRecipePage/{id}/{rating}", method=RequestMethod.GET)
+    public String rateRecipe(@PathVariable("id") Long id, @PathVariable("rating") int rating, Model model, Rating rtng) {
+        String returnPage = "redirect:/singleRecipePage/" + String.valueOf((id));
+        System.out.println("DEBUG - rateRecipe");
+        System.out.println("DEBUG - rating: " + rating);
+        rtng.setRating(rating);
+        System.out.println(rtng.getRating());
+        return returnPage;
     }
 }

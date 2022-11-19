@@ -48,6 +48,18 @@
                       </div>
                   </div>
               </div>
+              <!--
+              <div class="card-body">
+                  <form th:action="@{/singleRecipePage/{id}(id=${recipe.id})/rating}" method="post">
+                      <div class="rating-dropdown" th:object="${rating}">
+                          <select class="form-control" id="rating" name="rating">
+
+                          </select>
+                      </div>
+                  </form>
+
+              </div>
+              -->
 
               <!--<div th:if="${isFavorited == false}">
                   <a th:href="@{/recipeSaved/{id}(id=${recipe.id})}">
