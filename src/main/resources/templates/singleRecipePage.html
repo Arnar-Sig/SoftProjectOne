@@ -16,6 +16,10 @@
               <h5 class="card-title" th:text="${recipe.name}"></h5>
             </div>
               <div class="card-body">
+                  <h6>Rating:</h6>
+                  <p class="card-text" th:text="${recipe.rating}"></p>
+              </div>
+              <div class="card-body">
                   <h6>Ingredients:</h6>
                   <ul class="list-group list-group-flush" th:each="ingredient: ${recipe.ingredients}">
                       <li class="list-group-item" th:text="${ingredient}"></li>

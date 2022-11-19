@@ -35,7 +35,9 @@ public class Recipe {
 	}
 
 
-
+	public Double getRating() {
+		return rating;
+	}
 	public HashSet<String> getIngredients() {
 		return ingredients;
 	}
