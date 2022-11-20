@@ -48,18 +48,25 @@
                       </div>
                   </div>
               </div>
-              <!--
+
               <div class="card-body">
-                  <form th:action="@{/singleRecipePage/{id}(id=${recipe.id})/rating}" method="post">
-                      <div class="rating-dropdown" th:object="${rating}">
-                          <select class="form-control" id="rating" name="rating">
-
-                          </select>
-                      </div>
-                  </form>
-
+                  <h6>Rate recipe:</h6>
+                  <a th:href="@{/singleRecipePage/1/{id}(id=${recipe.id})}">
+                      <button class="btn btn-outline-success my-2 my-sm-0" type="button">1</button>
+                  </a>
+                  <a th:href="@{/singleRecipePage/2/{id}(id=${recipe.id})}">
+                      <button class="btn btn-outline-success my-2 my-sm-0" type="button">2</button>
+                  </a>
+                  <a th:href="@{/singleRecipePage/3/{id}(id=${recipe.id})}">
+                      <button class="btn btn-outline-success my-2 my-sm-0" type="button">3</button>
+                  </a>
+                  <a th:href="@{/singleRecipePage/4/{id}(id=${recipe.id})}">
+                      <button class="btn btn-outline-success my-2 my-sm-0" type="button">4</button>
+                  </a>
+                  <a th:href="@{/singleRecipePage/5/{id}(id=${recipe.id})}">
+                      <button class="btn btn-outline-success my-2 my-sm-0" type="button">5</button>
+                  </a>
               </div>
-              -->
 
               <!--<div th:if="${isFavorited == false}">
                   <a th:href="@{/recipeSaved/{id}(id=${recipe.id})}">

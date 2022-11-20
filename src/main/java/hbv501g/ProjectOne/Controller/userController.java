@@ -213,7 +213,7 @@ public class userController {
         return "logInPrompt";
     }
 
-    @RequestMapping(value = "/singleRecipePage/{id}/{rating}", method=RequestMethod.GET)
+    @RequestMapping(value = "/singleRecipePage/{rating}/{id}", method=RequestMethod.GET)
     public String rateRecipe(@PathVariable("id") Long id, @PathVariable("rating") int rating, Model model, Rating rtng) {
         String returnPage = "redirect:/singleRecipePage/" + String.valueOf((id));
         System.out.println("DEBUG - rateRecipe");
@@ -222,4 +222,13 @@ public class userController {
         System.out.println(rtng.getRating());
         return returnPage;
     }
+    /*
+    @RequestMapping(value = "/singleRecipePage/{id}/{rating}", method=RequestMethod.POST)
+    public String rateRecipePOST(@PathVariable("id") Long id, @PathVariable("rating") int rating, Model model, Rating rtng) {
+        String returnPage = "redirect:/singleRecipePage/" + String.valueOf((id));
+        System.out.println("DEBUG - rateRecipePOST");
+        return returnPage;
+    }
+
+     */
 }
