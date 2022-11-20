@@ -1,10 +1,6 @@
 package hbv501g.ProjectOne.Controller;
 
-import com.sun.xml.bind.v2.TODO;
-import hbv501g.ProjectOne.Entities.Rating;
-import hbv501g.ProjectOne.Entities.Recipe;
 import hbv501g.ProjectOne.Entities.SearchModel;
-import hbv501g.ProjectOne.Entities.User;
 import hbv501g.ProjectOne.Services.RecipeService;
 import hbv501g.ProjectOne.Services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,10 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import javax.naming.directory.SearchResult;
 import javax.servlet.http.HttpSession;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * General controller class for all aspects of the website other than the user.
@@ -50,8 +43,6 @@ public class homeController {
 
         SearchModel sm = new SearchModel();
         model.addAttribute("search", sm);
-        Rating rating = new Rating();
-        model.addAttribute("rating", rating);
         return "index";
     }
 

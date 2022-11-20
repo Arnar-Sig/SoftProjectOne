@@ -1,7 +1,5 @@
 package hbv501g.ProjectOne.Controller;
 
-import hbv501g.ProjectOne.Entities.Rating;
-import hbv501g.ProjectOne.Entities.Recipe;
 import hbv501g.ProjectOne.Entities.User;
 import hbv501g.ProjectOne.Services.RecipeService;
 import hbv501g.ProjectOne.Services.UserService;
@@ -12,7 +10,6 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
-import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 
@@ -214,12 +211,10 @@ public class userController {
     }
 
     @RequestMapping(value = "/singleRecipePage/{rating}/{id}", method=RequestMethod.GET)
-    public String rateRecipe(@PathVariable("id") Long id, @PathVariable("rating") int rating, Model model, Rating rtng) {
+    public String rateRecipe(@PathVariable("id") Long id, @PathVariable("rating") int rating, Model model) {
         String returnPage = "redirect:/singleRecipePage/" + String.valueOf((id));
         System.out.println("DEBUG - rateRecipe");
         System.out.println("DEBUG - rating: " + rating);
-        rtng.setRating(rating);
-        System.out.println(rtng.getRating());
         return returnPage;
     }
     /*
