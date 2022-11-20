@@ -1,6 +1,7 @@
 package hbv501g.ProjectOne.Services;
 
 import hbv501g.ProjectOne.Entities.Recipe;
+import hbv501g.ProjectOne.Entities.User;
 
 import java.util.ArrayList;
 import java.util.Optional;
@@ -22,4 +23,8 @@ public interface RecipeService {
      * @return - Recipe corresponding to the given id.
      */
     Optional<Recipe> findByID(Long id);
+
+    void addRating(int rating, User user, Recipe recipe);
+    void updateRating(Recipe recipe);
+    Recipe save(Recipe recipe);
 }

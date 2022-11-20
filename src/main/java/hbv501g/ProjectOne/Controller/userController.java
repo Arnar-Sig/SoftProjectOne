@@ -211,10 +211,14 @@ public class userController {
     }
 
     @RequestMapping(value = "/singleRecipePage/{rating}/{id}", method=RequestMethod.GET)
-    public String rateRecipe(@PathVariable("id") Long id, @PathVariable("rating") int rating, Model model) {
+    public String rateRecipe(@PathVariable("id") Long id, @PathVariable("rating") int rating, Model model, HttpSession session) {
+        String sessionUser = (String) session.getAttribute("LoggedInUser");
+        if(sessionUser != null){
+            System.out.println("DEBUG - rateRecipe()");
+            recipeService.addRating(rating, userService.findByUsername(sessionUser), recipeService.findByID(id).get());
+        }
+
         String returnPage = "redirect:/singleRecipePage/" + String.valueOf((id));
-        System.out.println("DEBUG - rateRecipe");
-        System.out.println("DEBUG - rating: " + rating);
         return returnPage;
     }
     /*

@@ -20,9 +20,9 @@ public class Recipe {
 	private String name;
 	@ManyToOne(fetch = FetchType.LAZY)
 	private User user;
-	private HashSet<Double> ratings;	// Contains individual ratings.
+	private HashSet<Integer> ratings;	// Contains individual ratings.
 	private HashSet<String> raters; 	// Contains usernames of those who have rated.
-	private Double rating;	// Recipe's rating. Average of ratings.
+	private int rating;	// Recipe's rating. Average of ratings.
 
 	/**
 	 * Getters and setters.
@@ -35,9 +35,35 @@ public class Recipe {
 	}
 
 
-	public Double getRating() {
+	public int getRating() {
 		return rating;
 	}
+
+	public void updateRating() {
+		Double sum = 0.0;
+		for (int i : this.ratings) {
+			sum += i;
+		}
+		Double avg = sum / this.ratings.size();
+		if (avg < 0.5) {this.rating = 0;}
+		else if (avg < 1.5) {this.rating = 1;}
+		else if (avg < 2.5) {this.rating = 2;}
+		else if (avg < 3.5) {this.rating = 3;}
+		else if (avg < 4.5) {this.rating = 4;}
+		else {this.rating = 5;}
+		System.out.println("DEBUG - sum: " + sum);
+		System.out.println("DEBUG - avg: " + avg);
+		System.out.println("DEBUG - ratings.size(): " + this.ratings.size());
+	}
+	public void addRating(int rating, String username) {
+		System.out.println("DEBUG - addRating()");
+		if (!this.raters.contains(username)) {
+			System.out.println("DEBUG - !this.raters.contains(username)");
+			this.ratings.add(rating);
+			this.raters.add(username);
+		}
+	}
+
 	public HashSet<String> getIngredients() {
 		return ingredients;
 	}
@@ -62,7 +88,9 @@ public class Recipe {
 		this.ingredients = ingredients;
 		this.instructions = instructions;
 		this.name = name;
-		this.rating = 5.0;	// Temp
+		this.rating = 5;
+		this.raters = new HashSet<>();
+		this.ratings = new HashSet<>();
 	}
 
 	/**
