@@ -18,6 +18,7 @@ public class Recipe {
 	private HashSet<String> ingredients;
 	private String instructions;
 	private String name;
+	private HashSet<String> comments;
 	@ManyToOne(fetch = FetchType.LAZY)
 	private User user;
 	private HashSet<Integer> ratings;	// Contains individual ratings.
@@ -67,6 +68,7 @@ public class Recipe {
 	public HashSet<String> getIngredients() {
 		return ingredients;
 	}
+	public HashSet<String> getComments() { return comments; }
 	public String getInstructions() {
 		return instructions;
 	}
@@ -83,15 +85,26 @@ public class Recipe {
 	 * @param name - Name of the recipe.
 	 * @param ingredients - Ingredients in the recipe.
 	 * @param instructions - Instructions on how to create the recipe.
+	 * @param comments - user comments on said recipe.
 	 */
-	public Recipe(String name, HashSet<String> ingredients, String instructions) {
+	public Recipe(String name, HashSet<String> ingredients, String instructions, HashSet<String> comments) {
 		this.ingredients = ingredients;
 		this.instructions = instructions;
 		this.name = name;
 		this.rating = 5;
 		this.raters = new HashSet<>();
 		this.ratings = new HashSet<>();
+		this.comments = comments;
 	}
+
+	/**
+	 * 	Í VINNSLU
+	 * @param comment
+	 */
+	public void AddComment(String comment) {
+		comments.add(comment);
+	}
+
 
 	/**
 	 * Describes the recipe in String format.
@@ -102,7 +115,8 @@ public class Recipe {
 		return "Recipe{" +
 				"id=" + id +
 				", ingredients=" + ingredients +
-				", instructions='" + instructions + '\'' +
+				", instructions='" + instructions +
+				", comments='" + comments + '\'' +
 				'}';
 	}
 }

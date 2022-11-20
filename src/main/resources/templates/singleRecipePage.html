@@ -48,6 +48,19 @@
                       </div>
                   </div>
               </div>
+              <ul class="list-group list-group-flush" th:each="comment: ${recipe.comments}">
+                  <li class="list-group-item" th:text="${comment}"></li>
+              </ul>
+              <div class="card-body">
+                  <form action="postComment" method="POST">
+                      Comment: <textarea id="comment" value=" " name="comment"></textarea>
+                  </form>
+                  <a th:href="@{/addComment/{id}(id=${recipe.id})}">
+                      <button class="btn btn-outline-success my-2 my-sm-0" type="button">
+                          Add Comment
+                      </button>
+                  </a>
+              </div>
 
               <div class="card-body">
                   <h6>Rate recipe:</h6>

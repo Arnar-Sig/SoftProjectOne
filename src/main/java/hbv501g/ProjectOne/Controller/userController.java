@@ -209,7 +209,6 @@ public class userController {
         }
         return "logInPrompt";
     }
-
     @RequestMapping(value = "/singleRecipePage/{rating}/{id}", method=RequestMethod.GET)
     public String rateRecipe(@PathVariable("id") Long id, @PathVariable("rating") int rating, Model model, HttpSession session) {
         String sessionUser = (String) session.getAttribute("LoggedInUser");
@@ -230,4 +229,24 @@ public class userController {
     }
 
      */
+    /**
+     * Í VINNSLU
+     * @param id
+     * @param session
+     * @param model
+     * @return
+     */
+    @RequestMapping(value="/addComment/{id}", method = RequestMethod.GET)
+    public String addComment(@PathVariable("id") Long id, HttpSession session, Model model){
+        String sessionUser = (String) session.getAttribute("LoggedInUser");
+        if(sessionUser != null){
+
+            String returnPage = "redirect:/singleRecipePage/" + String.valueOf((id));
+            System.out.println("commented");
+            return returnPage;
+
+        }
+        //System.out.println("Debug - saveRecipeMethod - sessionUser = null");
+        return "redirect:/loginPage";
+    }
 }
