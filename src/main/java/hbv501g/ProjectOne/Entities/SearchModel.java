@@ -2,10 +2,15 @@ package hbv501g.ProjectOne.Entities;
 
 /** Simple object used for passing search parameters to html-templates. **/
 public class SearchModel {
-
+    /**
+     * Variables.
+     */
     private long id;
     private String content;
 
+    /**
+     * Getters and setters.
+     */
     public long getId() {
         return id;
     }

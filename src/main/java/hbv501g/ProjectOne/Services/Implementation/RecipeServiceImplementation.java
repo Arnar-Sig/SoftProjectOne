@@ -1,8 +1,10 @@
 package hbv501g.ProjectOne.Services.Implementation;
 
 import hbv501g.ProjectOne.Entities.Recipe;
+import hbv501g.ProjectOne.Entities.User;
 import hbv501g.ProjectOne.Repositories.RecipeRepository;
 import hbv501g.ProjectOne.Services.RecipeService;
+import hbv501g.ProjectOne.Services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -11,10 +13,19 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Optional;
 
+/**
+ * Implementation of the RecipeService.
+ */
 @Service
 public class RecipeServiceImplementation implements RecipeService {
+    /**
+     * Variables.
+     */
     private RecipeRepository recipeRepository;
 
+    /**
+     * Constructor.
+     */
     @Autowired
     public RecipeServiceImplementation(RecipeRepository recipeRepository) {
         this.recipeRepository = recipeRepository;
@@ -84,6 +95,12 @@ public class RecipeServiceImplementation implements RecipeService {
         }
         return filteredRecipes;
     }
+
+    /**
+     * Finds and returns a Recipe from its id.
+     * @param id - Id of the recipe.
+     * @return - Recipe.
+     */
     @Override
     public Optional<Recipe> findByID(Long id){
         try {
@@ -91,5 +108,24 @@ public class RecipeServiceImplementation implements RecipeService {
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
+    }
+
+    @Override
+    public void addRating(int rating, User user, Recipe recipe) {
+        recipe.addRating(rating, user.getUsername());
+        save(recipe);
+        updateRating(recipe);
+
+    }
+
+    @Override
+    public void updateRating(Recipe recipe) {
+        recipe.updateRating();
+        save(recipe);
+    }
+
+    @Override
+    public Recipe save(Recipe recipe) {
+        return recipeRepository.save(recipe);
     }
 }
