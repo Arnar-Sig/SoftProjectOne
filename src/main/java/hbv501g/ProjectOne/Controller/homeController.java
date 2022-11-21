@@ -12,6 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
+import java.util.HashSet;
 
 /**
  * General controller class for all aspects of the website other than the user.
@@ -104,6 +105,15 @@ public class homeController {
     @RequestMapping(value = "/submitRecipe", method = RequestMethod.POST)
     public String submitRecipeSubmit(Model model, @ModelAttribute RecipeCreationForm newRecipeCreationForm) {
         System.out.println("DEBUG - submitRecipeSubmit");
+        HashSet<String> newRecipeIngredients = new HashSet<>();
+        newRecipeIngredients.add(newRecipeCreationForm.getIngredient1());
+        newRecipeIngredients.add(newRecipeCreationForm.getIngredient2());
+        newRecipeIngredients.add(newRecipeCreationForm.getIngredient3());
+        newRecipeIngredients.add(newRecipeCreationForm.getIngredient4());
+        newRecipeIngredients.add(newRecipeCreationForm.getIngredient5());
+
+        Recipe r = new Recipe(newRecipeCreationForm.getName(), newRecipeIngredients, newRecipeCreationForm.getInstructions());
+        recipeService.save(r);
         return "redirect:/index";
     }
 }
