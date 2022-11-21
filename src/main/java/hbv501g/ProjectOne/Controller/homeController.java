@@ -60,7 +60,6 @@ public class homeController {
     public String SearchSubmitPOST(SearchModel search, HttpSession session, Model model){
         model.addAttribute("all", recipeService.filter(search.getContent()));
         return "recipePage";
-        // dfsa
 
     }
 
