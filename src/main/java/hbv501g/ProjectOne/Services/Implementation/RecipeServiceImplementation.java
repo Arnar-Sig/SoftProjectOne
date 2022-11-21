@@ -1,6 +1,7 @@
 package hbv501g.ProjectOne.Services.Implementation;
 
 import hbv501g.ProjectOne.Entities.Recipe;
+import hbv501g.ProjectOne.Entities.RecipeCreationForm;
 import hbv501g.ProjectOne.Entities.User;
 import hbv501g.ProjectOne.Repositories.RecipeRepository;
 import hbv501g.ProjectOne.Services.RecipeService;
@@ -133,5 +134,33 @@ public class RecipeServiceImplementation implements RecipeService {
     public void addComment(Recipe recipe, String comment) {
         recipe.AddComment(comment);
         save(recipe);
+    }
+
+    @Override
+    public void submitRecipe(RecipeCreationForm newRecipeCreationForm) {
+        HashSet<String> newRecipeIngredients = new HashSet<>();
+        if (!newRecipeCreationForm.getIngredient0().isEmpty()) {
+            newRecipeIngredients.add(newRecipeCreationForm.getIngredient0());
+            System.out.println(newRecipeCreationForm.getIngredient0());
+        }
+        if (!newRecipeCreationForm.getIngredient1().isEmpty()) {
+            newRecipeIngredients.add(newRecipeCreationForm.getIngredient1());
+            System.out.println(newRecipeCreationForm.getIngredient1());
+        }
+        if (!newRecipeCreationForm.getIngredient2().isEmpty()) {
+            newRecipeIngredients.add(newRecipeCreationForm.getIngredient2());
+            System.out.println(newRecipeCreationForm.getIngredient2());
+        }
+        if (!newRecipeCreationForm.getIngredient3().isEmpty()) {
+            newRecipeIngredients.add(newRecipeCreationForm.getIngredient3());
+            System.out.println(newRecipeCreationForm.getIngredient3());
+        }
+        if (!newRecipeCreationForm.getIngredient4().isEmpty()) {
+            newRecipeIngredients.add(newRecipeCreationForm.getIngredient4());
+            System.out.println(newRecipeCreationForm.getIngredient4());
+        }
+
+        Recipe r = new Recipe(newRecipeCreationForm.getName(), newRecipeIngredients, newRecipeCreationForm.getInstructions());
+        save(r);
     }
 }

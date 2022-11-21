@@ -1,6 +1,7 @@
 package hbv501g.ProjectOne.Services;
 
 import hbv501g.ProjectOne.Entities.Recipe;
+import hbv501g.ProjectOne.Entities.RecipeCreationForm;
 import hbv501g.ProjectOne.Entities.User;
 
 import java.util.ArrayList;
@@ -28,4 +29,5 @@ public interface RecipeService {
     void updateRating(Recipe recipe);
     Recipe save(Recipe recipe);
     void addComment(Recipe recipe, String comment);
+    void submitRecipe(RecipeCreationForm recipeCreationForm);
 }
