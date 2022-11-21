@@ -2,6 +2,7 @@ package hbv501g.ProjectOne.Controller;
 
 import hbv501g.ProjectOne.Entities.Comment;
 import hbv501g.ProjectOne.Entities.Recipe;
+import hbv501g.ProjectOne.Entities.RecipeCreationForm;
 import hbv501g.ProjectOne.Entities.SearchModel;
 import hbv501g.ProjectOne.Services.RecipeService;
 import hbv501g.ProjectOne.Services.UserService;
@@ -97,11 +98,11 @@ public class homeController {
      */
     @RequestMapping(value = "/submitRecipe", method = RequestMethod.GET)
     public String submitRecipeForm(Model model) {
-        model.addAttribute("newrecipe", new Recipe());
+        model.addAttribute("newRecipeCreationForm", new RecipeCreationForm());
         return "submitRecipe";
     }
     @RequestMapping(value = "/submitRecipe", method = RequestMethod.POST)
-    public String submitRecipeSubmit(Model model, @ModelAttribute Recipe newRecipe) {
+    public String submitRecipeSubmit(Model model, @ModelAttribute RecipeCreationForm newRecipeCreationForm) {
         System.out.println("DEBUG - submitRecipeSubmit");
         return "redirect:/index";
     }
