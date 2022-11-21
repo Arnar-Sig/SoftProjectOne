@@ -85,16 +85,15 @@ public class Recipe {
 	 * @param name - Name of the recipe.
 	 * @param ingredients - Ingredients in the recipe.
 	 * @param instructions - Instructions on how to create the recipe.
-	 * @param comments - user comments on said recipe.
 	 */
-	public Recipe(String name, HashSet<String> ingredients, String instructions, HashSet<String> comments) {
+	public Recipe(String name, HashSet<String> ingredients, String instructions) {
 		this.ingredients = ingredients;
 		this.instructions = instructions;
 		this.name = name;
 		this.rating = 5;
 		this.raters = new HashSet<>();
 		this.ratings = new HashSet<>();
-		this.comments = comments;
+		this.comments = new HashSet<>();
 	}
 
 	/**

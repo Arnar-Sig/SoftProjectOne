@@ -53,7 +53,7 @@ public class userController {
         //}
         // Prenta út alla users.
         //System.out.println("Debug - prenta út all users og username þeirra.");
-        for (int i = 0; i < (usernames.size()); i++) {System.out.println(usernames.get(i).getUsername());}
+        //for (int i = 0; i < (usernames.size()); i++) {System.out.println(usernames.get(i).getUsername());}
         return "loginPage";
     }
 
@@ -156,7 +156,7 @@ public class userController {
             */
 
             String returnPage = "redirect:/singleRecipePage/" + String.valueOf((id));
-            System.out.println("Successfully saved a recipe!");
+            //System.out.println("Successfully saved a recipe!");
             return returnPage;
 
         }
@@ -178,7 +178,7 @@ public class userController {
 
 
         String returnPage = "redirect:/singleRecipePage/" + String.valueOf((id));
-        System.out.println("Debug - takki virkaði!");
+        //System.out.println("Debug - takki virkaði!");
         return returnPage;
     }
 
@@ -195,7 +195,7 @@ public class userController {
         if(sessionUser != null){
             HashSet<Long> favouriteRecipes = userService.findByUsername(sessionUser).getFavoriteRecipes();
 
-            System.out.println("DEBUG - id: " + id);
+            //System.out.println("DEBUG - id: " + id);
 
             int index = 1;
             for (Long i : favouriteRecipes) {
@@ -213,7 +213,7 @@ public class userController {
     public String rateRecipe(@PathVariable("id") Long id, @PathVariable("rating") int rating, Model model, HttpSession session) {
         String sessionUser = (String) session.getAttribute("LoggedInUser");
         if(sessionUser != null){
-            System.out.println("DEBUG - rateRecipe()");
+            //System.out.println("DEBUG - rateRecipe()");
             recipeService.addRating(rating, userService.findByUsername(sessionUser), recipeService.findByID(id).get());
         }
 

@@ -61,15 +61,6 @@ public class homeController {
         return "recipePage";
 
     }
-    /* OLD
-    @PostMapping("/index")
-    public String searchSubmit(@ModelAttribute SearchModel search, Model model) {
-        ArrayList<Recipe> filteredRecipes = recipeService.filter(search.getContent());
-        model.addAttribute("all", filteredRecipes);
-        return "recipePage";
-    }*/
-
-
 
     /** Link to a page with only a single recipe.
      *  Retrieves the id parameter from the url, queries the
@@ -86,35 +77,11 @@ public class homeController {
     public String viewSingleRecipe(@PathVariable("id") Long id, HttpSession session, Model model) {
         String currentUser = String.valueOf(session.getAttribute("LoggedInUser"));
         if(currentUser != null){
-            System.out.println("Currently logged in user:" + currentUser);
+            //System.out.println("Currently logged in user:" + currentUser);
         }
-    /*        Recipe r;
-        //System.out.println("Debug - id: " + id);
-        try {
-            r = recipeService.findByID(id).get();
-        } catch (Exception e) {
-            r = recipeService.findByID(1L).get();
-            throw new RuntimeException(e);
-        }*/
-        /*model.addAttribute("recipe", r);*/
         model.addAttribute("isFavorited", userService.findByUsername(currentUser).
                 getFavoriteRecipes().contains(id));
         model.addAttribute("recipe", recipeService.findByID(id).get());
         return "singleRecipePage";
     }
-    /* OLD
-    @RequestMapping("/singleRecipePage")
-    public String hello(@RequestParam(value="id",  defaultValue="1") Long id, Model model) {
-        Recipe r;
-        System.out.println("Debug - id: " + id);
-        try {
-            r = recipeService.findByID(id).get();
-        } catch (Exception e) {
-            r = recipeService.findByID(1L).get();
-            throw new RuntimeException(e);
-        }
-        model.addAttribute("recipe", r);
-        return "singleRecipePage";
-    }*/
-
 }
