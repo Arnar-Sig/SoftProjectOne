@@ -50,15 +50,7 @@
                       </div>
                   </div>
               </div>
-              <div th:if="${isFavorited != null}">
-                  <div class="card-body">
-                      <h6>Leave a comment:</h6>
-                      <form action="#" th:action="@{/addComment/{id}(id=${recipe.id})}" th:object="${comment}" method="post">
-                          <input type="text" th:field="*{commentString}" />
-                          <input type="submit" value="Submit"  class="btn btn-outline-success my-2 my-sm-0"/>
-                      </form>
-                  </div>
-              </div>
+
               <div th:if="${isFavorited != null}">
                   <div class="card-body">
                       <h6>Rate recipe:</h6>
@@ -77,6 +69,15 @@
                       <a th:href="@{/singleRecipePage/5/{id}(id=${recipe.id})}">
                           <button class="btn btn-outline-success my-2 my-sm-0" type="button">5</button>
                       </a>
+                  </div>
+              </div>
+              <div th:if="${isFavorited != null}">
+                  <div class="card-body">
+                      <h6>Leave a comment:</h6>
+                      <form action="#" th:action="@{/addComment/{id}(id=${recipe.id})}" th:object="${comment}" method="post">
+                          <input type="text" th:field="*{commentString}" />
+                          <input type="submit" value="Submit"  class="btn btn-outline-success my-2 my-sm-0"/>
+                      </form>
                   </div>
               </div>
 
