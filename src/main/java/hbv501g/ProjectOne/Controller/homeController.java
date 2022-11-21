@@ -77,6 +77,7 @@ public class homeController {
     @RequestMapping(value = "/singleRecipePage/{id}", method = RequestMethod.GET)
     public String viewSingleRecipe(@PathVariable("id") Long id, HttpSession session, Model model) {
         String currentUser = String.valueOf(session.getAttribute("LoggedInUser"));
+<<<<<<< HEAD
         if(currentUser != null){
             //System.out.println("Currently logged in user:" + currentUser);
         }
@@ -84,6 +85,33 @@ public class homeController {
                 getFavoriteRecipes().contains(id));
         model.addAttribute("recipe", recipeService.findByID(id).get());
         model.addAttribute("comment", new Comment());
+=======
+        //System.out.println(currentUser);
+        model.addAttribute("recipe", recipeService.findByID(id).get());
+
+        //TODO: Use singleRecipePage instead of new page
+/*        if(currentUser == "null"){
+            return "singleRecipePageNotSignedIn";
+        }*/
+
+    /*        Recipe r;
+        //System.out.println("Debug - id: " + id);
+        try {
+            r = recipeService.findByID(id).get();
+        } catch (Exception e) {
+            r = recipeService.findByID(1L).get();
+            throw new RuntimeException(e);
+        }*/
+        /*model.addAttribute("recipe", r);*/
+        try {
+            model.addAttribute("isFavorited", userService.findByUsername(currentUser).
+                    getFavoriteRecipes().contains(id));
+        }catch (Exception e){
+            System.out.println(e);
+        }
+
+
+>>>>>>> arnar
         return "singleRecipePage";
     }
 }

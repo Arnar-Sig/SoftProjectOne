@@ -17,24 +17,6 @@
 		<java.version>18</java.version>
 	</properties>
 	<dependencies>
-
-		<!-- SECURITY/AUTH/LOGIN DEPENDENCIES
-		<dependency>
-			<groupId>org.thymeleaf.extras</groupId>
-			<artifactId>thymeleaf-extras-springsecurity5</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-security</artifactId>
-		</dependency>
-		END SECURITY/AUTH/LOGIN DEPENDENCIES -->
-
-		<!--<dependency>
-			<groupId>org.javassist</groupId>
-			<artifactId>javassist</artifactId>
-			<version>3.23.1-GA</version>
-		</dependency>-->
-
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-jpa</artifactId>
