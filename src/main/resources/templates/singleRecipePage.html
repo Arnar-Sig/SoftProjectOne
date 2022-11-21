@@ -30,24 +30,27 @@
               <p class="card-text" th:text="${recipe.instructions}"></p>
             </div>
               <div class="card-body">
-                  <div th:switch="${isFavorited}">
-                      <div th:case="false">
-                          <a th:href="@{/recipeSaved/{id}(id=${recipe.id})}">
-                              <button class="btn btn-outline-success my-2 my-sm-0" type="button">
-                                  Save Recipe
-                              </button>
-                          </a>
-                      </div>
-                      <div th:case="true">
-                          <!-- TODO ADD A MAPPING TO THE DELETE FROM FAVORITES BUTTON -->
-                          <a th:href="@{/deleteSaved/{id}(id=${recipe.id})}">
-                              <button class="btn btn-outline-danger my-2 my-sm-0" type="button">
-                                  Remove Recipe
-                              </button>
-                          </a>
+                  <div th:if="${isFavorited != null}">
+                      <div th:switch="${isFavorited}">
+                          <div th:case="false">
+                              <a th:href="@{/recipeSaved/{id}(id=${recipe.id})}">
+                                  <button class="btn btn-outline-success my-2 my-sm-0" type="button">
+                                      Save Recipe
+                                  </button>
+                              </a>
+                          </div>
+                          <div th:case="true">
+                              <!-- TODO ADD A MAPPING TO THE DELETE FROM FAVORITES BUTTON -->
+                              <a th:href="@{/deleteSaved/{id}(id=${recipe.id})}">
+                                  <button class="btn btn-outline-danger my-2 my-sm-0" type="button">
+                                      Remove Recipe
+                                  </button>
+                              </a>
+                          </div>
                       </div>
                   </div>
               </div>
+<<<<<<< HEAD
 
               <div class="card-body">
                   <h6>Rate recipe:</h6>
@@ -66,6 +69,42 @@
                   <a th:href="@{/singleRecipePage/5/{id}(id=${recipe.id})}">
                       <button class="btn btn-outline-success my-2 my-sm-0" type="button">5</button>
                   </a>
+=======
+              <ul class="list-group list-group-flush" th:each="comment: ${recipe.comments}">
+                  <li class="list-group-item" th:text="${comment}"></li>
+              </ul>
+              <div th:if="${isFavorited != null}">
+                  <div class="card-body">
+                      <form action="postComment" method="POST">
+                          Comment: <textarea id="comment" value=" " name="comment"></textarea>
+                      </form>
+                      <a th:href="@{/addComment/{id}(id=${recipe.id})}">
+                          <button class="btn btn-outline-success my-2 my-sm-0" type="button">
+                              Add Comment
+                          </button>
+                      </a>
+                  </div>
+              </div>
+              <div th:if="${isFavorited != null}">
+                  <div class="card-body">
+                      <h6>Rate recipe:</h6>
+                      <a th:href="@{/singleRecipePage/1/{id}(id=${recipe.id})}">
+                          <button class="btn btn-outline-success my-2 my-sm-0" type="button">1</button>
+                      </a>
+                      <a th:href="@{/singleRecipePage/2/{id}(id=${recipe.id})}">
+                          <button class="btn btn-outline-success my-2 my-sm-0" type="button">2</button>
+                      </a>
+                      <a th:href="@{/singleRecipePage/3/{id}(id=${recipe.id})}">
+                          <button class="btn btn-outline-success my-2 my-sm-0" type="button">3</button>
+                      </a>
+                      <a th:href="@{/singleRecipePage/4/{id}(id=${recipe.id})}">
+                          <button class="btn btn-outline-success my-2 my-sm-0" type="button">4</button>
+                      </a>
+                      <a th:href="@{/singleRecipePage/5/{id}(id=${recipe.id})}">
+                          <button class="btn btn-outline-success my-2 my-sm-0" type="button">5</button>
+                      </a>
+                  </div>
+>>>>>>> origin/arnar
               </div>
 
               <div class="card-body">

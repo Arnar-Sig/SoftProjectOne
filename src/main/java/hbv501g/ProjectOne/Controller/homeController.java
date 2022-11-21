@@ -77,13 +77,16 @@ public class homeController {
     @RequestMapping(value = "/singleRecipePage/{id}", method = RequestMethod.GET)
     public String viewSingleRecipe(@PathVariable("id") Long id, HttpSession session, Model model) {
         String currentUser = String.valueOf(session.getAttribute("LoggedInUser"));
-        if(currentUser != null){
-            //System.out.println("Currently logged in user:" + currentUser);
-        }
-        model.addAttribute("isFavorited", userService.findByUsername(currentUser).
-                getFavoriteRecipes().contains(id));
+        //System.out.println(currentUser);
         model.addAttribute("recipe", recipeService.findByID(id).get());
         model.addAttribute("comment", new Comment());
+
+        try {
+            model.addAttribute("isFavorited", userService.findByUsername(currentUser).
+                    getFavoriteRecipes().contains(id));
+        }catch (Exception e){
+            System.out.println(e);
+        }
         return "singleRecipePage";
     }
 }
