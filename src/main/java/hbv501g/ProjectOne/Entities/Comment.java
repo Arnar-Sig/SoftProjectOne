@@ -5,4 +5,12 @@ public class Comment {
 
     public Comment() {
     }
+
+    public String getCommentString() {
+        return commentString;
+    }
+
+    public void setCommentString(String commentString) {
+        this.commentString = commentString;
+    }
 }

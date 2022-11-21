@@ -1,5 +1,6 @@
 package hbv501g.ProjectOne.Controller;
 
+import hbv501g.ProjectOne.Entities.Comment;
 import hbv501g.ProjectOne.Entities.SearchModel;
 import hbv501g.ProjectOne.Services.RecipeService;
 import hbv501g.ProjectOne.Services.UserService;
@@ -82,6 +83,7 @@ public class homeController {
         model.addAttribute("isFavorited", userService.findByUsername(currentUser).
                 getFavoriteRecipes().contains(id));
         model.addAttribute("recipe", recipeService.findByID(id).get());
+        model.addAttribute("comment", new Comment());
         return "singleRecipePage";
     }
 }

@@ -1,5 +1,7 @@
 package hbv501g.ProjectOne.Controller;
 
+import hbv501g.ProjectOne.Entities.Comment;
+import hbv501g.ProjectOne.Entities.Recipe;
 import hbv501g.ProjectOne.Entities.User;
 import hbv501g.ProjectOne.Services.RecipeService;
 import hbv501g.ProjectOne.Services.UserService;
@@ -236,6 +238,7 @@ public class userController {
      * @param model
      * @return
      */
+    /*
     @RequestMapping(value="/addComment/{id}", method = RequestMethod.GET)
     public String addComment(@PathVariable("id") Long id, HttpSession session, Model model){
         String sessionUser = (String) session.getAttribute("LoggedInUser");
@@ -243,6 +246,23 @@ public class userController {
 
             String returnPage = "redirect:/singleRecipePage/" + String.valueOf((id));
             System.out.println("commented");
+            return returnPage;
+
+        }
+        //System.out.println("Debug - saveRecipeMethod - sessionUser = null");
+        return "redirect:/loginPage";
+    }
+     */
+    @PostMapping("/addComment/{id}")
+    public String addComment(@PathVariable("id") Long id, HttpSession session, Model model, @ModelAttribute Comment comment) {
+        String sessionUser = (String) session.getAttribute("LoggedInUser");
+        if(sessionUser != null){
+
+            String returnPage = "redirect:/singleRecipePage/" + String.valueOf((id));
+            System.out.println("commented");
+            System.out.println(comment.getCommentString());
+            recipeService.addComment(recipeService.findByID(id).get(), comment.getCommentString());
+            System.out.println("DEBUG - recipe comments size: " + recipeService.findByID(id).get().getComments().size());
             return returnPage;
 
         }
