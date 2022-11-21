@@ -78,6 +78,15 @@ public class Recipe {
 	public String getName() {
 		return name;
 	}
+
+	public HashSet<Integer> getRatings() {
+		return ratings;
+	}
+
+	public HashSet<String> getRaters() {
+		return raters;
+	}
+
 	public Recipe() {}
 
 	/**

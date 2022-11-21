@@ -17,10 +17,15 @@ public interface UserService {
     User save(User user);
 
     /**
-     * Deletes a user.
+     * Deletes a user from the database.
      * @param user - User to be deleted.
      */
     void delete(User user);
+
+    /**
+     * Deletes all users from the database.
+     */
+    void deleteAll();
 
     /**
      * Finds and returns all users.

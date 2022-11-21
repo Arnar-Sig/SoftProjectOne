@@ -1,5 +1,6 @@
 package hbv501g.ProjectOne.Services.Implementation;
 
+import com.sun.xml.bind.v2.TODO;
 import hbv501g.ProjectOne.Entities.Recipe;
 import hbv501g.ProjectOne.Repositories.RecipeRepository;
 import hbv501g.ProjectOne.Repositories.UserRepository;
@@ -52,6 +53,28 @@ public class AdminServiceImplementation implements AdminService {
         ArrayList<Recipe> allRecipes = (ArrayList<Recipe>) recipeRepository.findAll();
         for (int i = 0; i < allRecipes.size(); i++) {
             allRecipes.get(i).getComments().clear();
+            recipeRepository.save(allRecipes.get(i));
+        }
+    }
+
+    /**
+     * Deletes all users from the database.
+     */
+    @Override
+    public void deleteAllUsers() {
+        userRepository.deleteAll();
+    }
+
+    /**
+     * Resets rating on all recipes to the default value 5.
+     */
+    @Override
+    public void resetAllRatings() {
+        ArrayList<Recipe> allRecipes = (ArrayList<Recipe>) recipeRepository.findAll();
+        for (int i = 0; i < allRecipes.size(); i++) {
+            allRecipes.get(i).getRatings().clear();
+            allRecipes.get(i).updateRating();
+            allRecipes.get(i).getRaters().clear();
             recipeRepository.save(allRecipes.get(i));
         }
     }

@@ -51,4 +51,15 @@ public class adminController {
         adminService.deleteAllComments();
         return "admin";
     }
+    @RequestMapping(value = "/adminDeleteAllUsers", method = RequestMethod.GET)
+    public String adminDeleteAllUsers(Model model) {
+        adminService.deleteAllUsers();
+        return "admin";
+    }
+
+    @RequestMapping(value = "/adminResetAllRatings", method = RequestMethod.GET)
+    public String adminResetAllRatings(Model model) {
+        adminService.resetAllRatings();
+        return "admin";
+    }
 }

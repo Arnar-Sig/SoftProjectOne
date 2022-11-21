@@ -46,6 +46,14 @@ public class UserServiceImplementation implements UserService {
     }
 
     /**
+     * Deletes all users from the database.
+     */
+    @Override
+    public void deleteAll() {
+        userRepository.deleteAll();
+    }
+
+    /**
      * Finds and returns a list of all users in the repository.
      * @return - List of all users in the repository.
      */

@@ -22,6 +22,9 @@ public interface UserRepository extends CrudRepository<User, Long> {
      */
     void delete(User user);
 
+    @Override
+    void deleteAll();
+
     /**
      * Returns a list of all users.
      * @return - List of all users.
