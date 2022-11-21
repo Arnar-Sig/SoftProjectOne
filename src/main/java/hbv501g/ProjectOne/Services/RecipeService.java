@@ -30,4 +30,5 @@ public interface RecipeService {
     Recipe save(Recipe recipe);
     void addComment(Recipe recipe, String comment);
     void submitRecipe(RecipeCreationForm recipeCreationForm);
+    Boolean nameAlreadyTaken(String name);
 }

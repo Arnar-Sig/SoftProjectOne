@@ -138,29 +138,48 @@ public class RecipeServiceImplementation implements RecipeService {
 
     @Override
     public void submitRecipe(RecipeCreationForm newRecipeCreationForm) {
-        HashSet<String> newRecipeIngredients = new HashSet<>();
-        if (!newRecipeCreationForm.getIngredient0().isEmpty()) {
-            newRecipeIngredients.add(newRecipeCreationForm.getIngredient0());
-            System.out.println(newRecipeCreationForm.getIngredient0());
-        }
-        if (!newRecipeCreationForm.getIngredient1().isEmpty()) {
-            newRecipeIngredients.add(newRecipeCreationForm.getIngredient1());
-            System.out.println(newRecipeCreationForm.getIngredient1());
-        }
-        if (!newRecipeCreationForm.getIngredient2().isEmpty()) {
-            newRecipeIngredients.add(newRecipeCreationForm.getIngredient2());
-            System.out.println(newRecipeCreationForm.getIngredient2());
-        }
-        if (!newRecipeCreationForm.getIngredient3().isEmpty()) {
-            newRecipeIngredients.add(newRecipeCreationForm.getIngredient3());
-            System.out.println(newRecipeCreationForm.getIngredient3());
-        }
-        if (!newRecipeCreationForm.getIngredient4().isEmpty()) {
-            newRecipeIngredients.add(newRecipeCreationForm.getIngredient4());
-            System.out.println(newRecipeCreationForm.getIngredient4());
-        }
+        if (!nameAlreadyTaken(newRecipeCreationForm.getName())) {
+            HashSet<String> newRecipeIngredients = new HashSet<>();
+            if (!newRecipeCreationForm.getIngredient0().isEmpty()) {
+                newRecipeIngredients.add(newRecipeCreationForm.getIngredient0());
+                System.out.println(newRecipeCreationForm.getIngredient0());
+            }
+            if (!newRecipeCreationForm.getIngredient1().isEmpty()) {
+                newRecipeIngredients.add(newRecipeCreationForm.getIngredient1());
+                System.out.println(newRecipeCreationForm.getIngredient1());
+            }
+            if (!newRecipeCreationForm.getIngredient2().isEmpty()) {
+                newRecipeIngredients.add(newRecipeCreationForm.getIngredient2());
+                System.out.println(newRecipeCreationForm.getIngredient2());
+            }
+            if (!newRecipeCreationForm.getIngredient3().isEmpty()) {
+                newRecipeIngredients.add(newRecipeCreationForm.getIngredient3());
+                System.out.println(newRecipeCreationForm.getIngredient3());
+            }
+            if (!newRecipeCreationForm.getIngredient4().isEmpty()) {
+                newRecipeIngredients.add(newRecipeCreationForm.getIngredient4());
+                System.out.println(newRecipeCreationForm.getIngredient4());
+            }
 
-        Recipe r = new Recipe(newRecipeCreationForm.getName(), newRecipeIngredients, newRecipeCreationForm.getInstructions());
-        save(r);
+            Recipe r = new Recipe(newRecipeCreationForm.getName(), newRecipeIngredients, newRecipeCreationForm.getInstructions());
+            save(r);
+        }
+    }
+
+    /**
+     * Checks whether a recipe exists with a given name.
+     * @param name - The name to be checkd.
+     * @return - Boolean; true if there exists a recipe with the given name,
+     *                    false otherwise.
+     */
+    @Override
+    public Boolean nameAlreadyTaken(String name) {
+        ArrayList<Recipe> allRecipes = (ArrayList<Recipe>) recipeRepository.findAll();
+        for (Recipe r : allRecipes) {
+            if (r.getName().equals(name)) {
+                return true;
+            }
+        }
+        return false;
     }
 }
