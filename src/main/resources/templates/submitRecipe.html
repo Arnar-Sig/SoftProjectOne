@@ -14,11 +14,11 @@
 <body>
   <form action="#" th:action="@{/submitRecipe}" th:object="${newRecipeCreationForm}" method="post">
     <p>Recipe name: <input type="text" th:field="*{name}" required/></p>
-    <p>Ingredient 1: <input type="text" th:field="*{ingredient1}" required/></p>
-    <p>Ingredient 2: <input type="text" th:field="*{ingredient2}"/></p>
-    <p>Ingredient 3: <input type="text" th:field="*{ingredient3}"/></p>
-    <p>Ingredient 4: <input type="text" th:field="*{ingredient4}"/></p>
-    <p>Ingredient 5: <input type="text" th:field="*{ingredient5}"/></p>
+    <p>Ingredient 1: <input type="text" th:field="*{ingredient0}" required/></p>
+    <p>Ingredient 2: <input type="text" th:field="*{ingredient1}"/></p>
+    <p>Ingredient 3: <input type="text" th:field="*{ingredient2}"/></p>
+    <p>Ingredient 4: <input type="text" th:field="*{ingredient3}"/></p>
+    <p>Ingredient 5: <input type="text" th:field="*{ingredient4}"/></p>
     <p>Instructions: <input type="text" th:field="*{instructions}" required/></p>
     <input type="submit" value="Submit">
   </form>

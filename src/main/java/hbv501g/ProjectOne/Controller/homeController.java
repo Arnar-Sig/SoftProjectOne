@@ -106,11 +106,30 @@ public class homeController {
     public String submitRecipeSubmit(Model model, @ModelAttribute RecipeCreationForm newRecipeCreationForm) {
         System.out.println("DEBUG - submitRecipeSubmit");
         HashSet<String> newRecipeIngredients = new HashSet<>();
-        newRecipeIngredients.add(newRecipeCreationForm.getIngredient1());
-        newRecipeIngredients.add(newRecipeCreationForm.getIngredient2());
-        newRecipeIngredients.add(newRecipeCreationForm.getIngredient3());
-        newRecipeIngredients.add(newRecipeCreationForm.getIngredient4());
-        newRecipeIngredients.add(newRecipeCreationForm.getIngredient5());
+        if (!newRecipeCreationForm.getIngredient0().isEmpty()) {
+            newRecipeIngredients.add(newRecipeCreationForm.getIngredient0());
+            System.out.println(newRecipeCreationForm.getIngredient0());
+        }
+        if (!newRecipeCreationForm.getIngredient1().isEmpty()) {
+            newRecipeIngredients.add(newRecipeCreationForm.getIngredient1());
+            System.out.println(newRecipeCreationForm.getIngredient1());
+        }
+        if (!newRecipeCreationForm.getIngredient2().isEmpty()) {
+            newRecipeIngredients.add(newRecipeCreationForm.getIngredient2());
+            System.out.println(newRecipeCreationForm.getIngredient2());
+        }
+        if (!newRecipeCreationForm.getIngredient3().isEmpty()) {
+            newRecipeIngredients.add(newRecipeCreationForm.getIngredient3());
+            System.out.println(newRecipeCreationForm.getIngredient3());
+        }
+        if (!newRecipeCreationForm.getIngredient4().isEmpty()) {
+            newRecipeIngredients.add(newRecipeCreationForm.getIngredient4());
+            System.out.println(newRecipeCreationForm.getIngredient4());
+        }
+
+
+
+
 
         Recipe r = new Recipe(newRecipeCreationForm.getName(), newRecipeIngredients, newRecipeCreationForm.getInstructions());
         recipeService.save(r);

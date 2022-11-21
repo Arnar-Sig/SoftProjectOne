@@ -4,7 +4,7 @@ public class RecipeCreationForm {
     /**
      * Instance variables.
      */
-    private String ingredient1, ingredient2, ingredient3, ingredient4, ingredient5;
+    private String ingredient0, ingredient1, ingredient2, ingredient3, ingredient4;
     private String name;
     private String instructions;
 
@@ -48,12 +48,12 @@ public class RecipeCreationForm {
         this.ingredient4 = ingredient4;
     }
 
-    public String getIngredient5() {
-        return ingredient5;
+    public String getIngredient0() {
+        return ingredient0;
     }
 
-    public void setIngredient5(String ingredient5) {
-        this.ingredient5 = ingredient5;
+    public void setIngredient0(String ingredient5) {
+        this.ingredient0 = ingredient5;
     }
 
     public String getName() {
