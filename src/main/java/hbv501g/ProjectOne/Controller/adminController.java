@@ -40,4 +40,10 @@ public class adminController {
     public String adminGet(Model model) {
         return "admin";
     }
+
+    @RequestMapping(value = "/adminDeleteCustomRecipes", method = RequestMethod.GET)
+    public String adminDeleteCustomRecipes(Model model) {
+        adminService.deleteAllCustomRecipes();
+        return "admin";
+    }
 }
