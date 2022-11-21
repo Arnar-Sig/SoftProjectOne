@@ -1,6 +1,7 @@
 package hbv501g.ProjectOne.Controller;
 
 import hbv501g.ProjectOne.Entities.Comment;
+import hbv501g.ProjectOne.Entities.Recipe;
 import hbv501g.ProjectOne.Entities.SearchModel;
 import hbv501g.ProjectOne.Services.RecipeService;
 import hbv501g.ProjectOne.Services.UserService;
@@ -88,5 +89,20 @@ public class homeController {
             System.out.println(e);
         }
         return "singleRecipePage";
+    }
+
+    /**
+     * Mapping of the page where a recipe can be submitted.
+     * @return - A string containing the name of the template to be displayed (singleRecipePage.html in this case).
+     */
+    @RequestMapping(value = "/submitRecipe", method = RequestMethod.GET)
+    public String submitRecipeForm(Model model) {
+        model.addAttribute("newrecipe", new Recipe());
+        return "submitRecipe";
+    }
+    @RequestMapping(value = "/submitRecipe", method = RequestMethod.POST)
+    public String submitRecipeSubmit(Model model, @ModelAttribute Recipe newRecipe) {
+        System.out.println("DEBUG - submitRecipeSubmit");
+        return "redirect:/index";
     }
 }

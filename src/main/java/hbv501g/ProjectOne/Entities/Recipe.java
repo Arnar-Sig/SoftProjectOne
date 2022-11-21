@@ -78,7 +78,7 @@ public class Recipe {
 	public String getName() {
 		return name;
 	}
-	protected Recipe() {}
+	public Recipe() {}
 
 	/**
 	 * Constructor for Recipe object.
@@ -95,11 +95,6 @@ public class Recipe {
 		this.ratings = new HashSet<>();
 		this.comments = new HashSet<>();
 	}
-
-	/**
-	 * 	Í VINNSLU
-	 * @param comment
-	 */
 	public void AddComment(String comment) {
 		this.comments.add(comment);
 	}
