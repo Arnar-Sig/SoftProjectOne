@@ -46,4 +46,9 @@ public class adminController {
         adminService.deleteAllCustomRecipes();
         return "admin";
     }
+    @RequestMapping(value = "/adminDeleteAllComments", method = RequestMethod.GET)
+    public String adminDeleteAllComments(Model model) {
+        adminService.deleteAllComments();
+        return "admin";
+    }
 }

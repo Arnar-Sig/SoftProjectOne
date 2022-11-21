@@ -43,4 +43,16 @@ public class AdminServiceImplementation implements AdminService {
             recipeRepository.deleteAllById(customRecipesIDs);
         }
     }
+
+    /**
+     * Deletes all comments from all recipes in the database.
+     */
+    @Override
+    public void deleteAllComments() {
+        ArrayList<Recipe> allRecipes = (ArrayList<Recipe>) recipeRepository.findAll();
+        for (int i = 0; i < allRecipes.size(); i++) {
+            allRecipes.get(i).getComments().clear();
+            recipeRepository.save(allRecipes.get(i));
+        }
+    }
 }
