@@ -102,7 +102,7 @@ public class Recipe {
 	 * @param comment
 	 */
 	public void AddComment(String comment) {
-		comments.add(comment);
+		this.comments.add(comment);
 	}
 
 

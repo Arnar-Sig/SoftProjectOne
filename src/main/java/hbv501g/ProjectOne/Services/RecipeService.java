@@ -27,4 +27,5 @@ public interface RecipeService {
     void addRating(int rating, User user, Recipe recipe);
     void updateRating(Recipe recipe);
     Recipe save(Recipe recipe);
+    void addComment(Recipe recipe, String comment);
 }

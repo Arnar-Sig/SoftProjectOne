@@ -128,4 +128,10 @@ public class RecipeServiceImplementation implements RecipeService {
     public Recipe save(Recipe recipe) {
         return recipeRepository.save(recipe);
     }
+
+    @Override
+    public void addComment(Recipe recipe, String comment) {
+        recipe.AddComment(comment);
+        save(recipe);
+    }
 }
