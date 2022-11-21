@@ -48,9 +48,6 @@
                       </div>
                   </div>
               </div>
-              <ul class="list-group list-group-flush" th:each="comment: ${recipe.comments}">
-                  <li class="list-group-item" th:text="${comment}"></li>
-              </ul>
 
               <div class="card-body">
                   <h6>Rate recipe:</h6>
@@ -77,6 +74,12 @@
                       <input type="text" th:field="*{commentString}" />
                       <input type="submit" value="Submit"  class="btn btn-outline-success my-2 my-sm-0"/>
                   </form>
+              </div>
+              <div class="card-body">
+                  <h6>Comments:</h6>
+                  <ul class="list-group list-group-flush" th:each="comment: ${recipe.comments}">
+                      <li class="list-group-item" th:text="${comment}"></li>
+                  </ul>
               </div>
 
               <!--<div th:if="${isFavorited == false}">
