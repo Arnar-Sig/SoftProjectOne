@@ -52,6 +52,12 @@
                   <li class="list-group-item" th:text="${comment}"></li>
               </ul>
               <div class="card-body">
+                  <!--
+                  <form action="#" th:action="@{/addComment/{id}(id=${recipe.id})}" th:object="${recipe}" method="post">
+                      <input type="text" th:field="*{comment}" />
+                  </form>
+                  -->
+                  <!--
                   <form action="postComment" method="POST">
                       Comment: <textarea id="comment" value=" " name="comment"></textarea>
                   </form>
@@ -60,6 +66,7 @@
                           Add Comment
                       </button>
                   </a>
+                  -->
               </div>
 
               <div class="card-body">
