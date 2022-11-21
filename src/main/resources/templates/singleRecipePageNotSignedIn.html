@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<!--<html xmlns:th="https://www.thymeleaf.org">-->
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Recipe</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+</head>
+<body>
+    <div class="card-deck mx-auto">
+      <div class="mx-auto d-flex">
+          <div class="card" style="width: 18rem;">
+            <img th:src="@{${'/img/' + recipe.id+'.jpg'}}" class="card-img-top" alt="..."/>
+            <div class="card-body">
+              <h5 class="card-title" th:text="${recipe.name}"></h5>
+            </div>
+              <div class="card-body">
+                  <h6>Rating:</h6>
+                  <p class="card-text" th:text="${recipe.rating}"></p>
+              </div>
+              <div class="card-body">
+                  <h6>Ingredients:</h6>
+                  <ul class="list-group list-group-flush" th:each="ingredient: ${recipe.ingredients}">
+                      <li class="list-group-item" th:text="${ingredient}"></li>
+                  </ul>
+              </div>
+            <div class="card-body">
+                <h6>Instructions:</h6>
+              <p class="card-text" th:text="${recipe.instructions}"></p>
+            </div>
+
+              <ul class="list-group list-group-flush" th:each="comment: ${recipe.comments}">
+                  <li class="list-group-item" th:text="${comment}"></li>
+              </ul>
+          </div>
+      </div>
+    </div>
+</body>
+</html>
