@@ -9,10 +9,7 @@ import hbv501g.ProjectOne.Services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.Optional;
+import java.util.*;
 
 /**
  * Implementation of the RecipeService.
@@ -121,8 +118,19 @@ public class RecipeServiceImplementation implements RecipeService {
 
     @Override
     public void updateRating(Recipe recipe) {
-        recipe.updateRating();
-        save(recipe);
+        Double sum = 0.0;
+        Iterator<Integer> iterator = recipe.getRatings().iterator();
+        while (iterator.hasNext()) {
+            sum += iterator.next();
+        }
+        Double avg = sum / recipe.getRaters().size();
+        if (recipe.getRatings().isEmpty()) {recipe.setRating(5);}
+        else if (avg < 0.5) {recipe.setRating(0); save(recipe);}
+        else if (avg < 1.5) {recipe.setRating(1); save(recipe);}
+        else if (avg < 2.5) {recipe.setRating(2); save(recipe);}
+        else if (avg < 3.5) {recipe.setRating(3); save(recipe);}
+        else if (avg < 4.5) {recipe.setRating(4); save(recipe);}
+        else {recipe.setRating(5); save(recipe);}
     }
 
     @Override

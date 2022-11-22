@@ -37,6 +37,10 @@ public class Recipe {
 	public int getRating() {
 		return rating;
 	}
+
+	public void setRating(int rating) {
+		this.rating = rating;
+	}
 	public void addRating(int rating, String username) {
 		System.out.println("DEBUG - addRating()");
 		if (!this.raters.contains(username)) {
@@ -91,22 +95,6 @@ public class Recipe {
 	 */
 	public void AddComment(String comment) {
 		this.comments.add(comment);
-	}
-	public void updateRating() {
-		Double sum = 0.0;
-		for (int i : this.ratings) {
-			sum += i;
-		}
-		Double avg = sum / this.ratings.size();
-		if (avg < 0.5) {this.rating = 0;}
-		else if (avg < 1.5) {this.rating = 1;}
-		else if (avg < 2.5) {this.rating = 2;}
-		else if (avg < 3.5) {this.rating = 3;}
-		else if (avg < 4.5) {this.rating = 4;}
-		else {this.rating = 5;}
-		System.out.println("DEBUG - sum: " + sum);
-		System.out.println("DEBUG - avg: " + avg);
-		System.out.println("DEBUG - ratings.size(): " + this.ratings.size());
 	}
 
 	/**
