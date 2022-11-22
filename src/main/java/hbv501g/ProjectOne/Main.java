@@ -32,7 +32,6 @@ public class Main {
 	 * Temporary code for adding recipes to the database.
 	 */
 
-
 	/*
 	// ONLY USE TO ADD NEW RECIPES //
 	@Bean
