@@ -9,7 +9,10 @@
 </head>
 <body>
     <div class="card-deck mx-auto">
-      <div class="mx-auto d-flex">
+      <div class="mx-auto d-flex" style="display: flex; flex-direction: column;">
+          <a th:href="@{/index}" style="align-self: center;">
+              <img src="/img/lazy.png" alt="..." style="width: 200px; height: 200px">
+          </a>
           <div class="card" style="width: 18rem;">
             <img th:src="@{${'/img/' + recipe.id+'.jpg'}}" class="card-img-top" alt="..."/>
             <div class="card-body">
