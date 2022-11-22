@@ -76,7 +76,6 @@ public class homeController {
      *  @param model - The model currently being used.
      *  @return - A string containing the name of the template to be displayed (singleRecipePage.html in this case).
      */
-    // TODO: Error message or when id with no match.
     @RequestMapping(value = "/singleRecipePage/{id}", method = RequestMethod.GET)
     public String viewSingleRecipe(@PathVariable("id") Long id, HttpSession session, Model model) {
         String currentUser = String.valueOf(session.getAttribute("LoggedInUser"));
@@ -92,4 +91,10 @@ public class homeController {
         }
         return "singleRecipePage";
     }
+
+    @RequestMapping(value = "/error", method = RequestMethod.GET)
+    public String error(HttpSession session, Model model) {
+        return "error";
+    }
+
 }
