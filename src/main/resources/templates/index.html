@@ -62,7 +62,7 @@
                 <form th:if="${session.LoggedInUser == null}" class="form-index-signup-button" method="GET" action="/signUpPage">
                     <button class="signup-button">Sign Up</button>
                 </form>
-                <form class="form-index-submit-recipe-form" method="GET" action="/submitRecipe">
+                <form th:if="${session.LoggedInUser != null}" class="form-index-submit-recipe-form" method="GET" action="/submitRecipe">
                     <button class="btn btn-outline-success my-2 my-sm-0">Submit Recipe</button>
                 </form>
             </div>
