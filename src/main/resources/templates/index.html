@@ -52,19 +52,17 @@
                 <input class="form-control mr-sm-2" type="text" placeholder="Leave empty to browse" th:field="*{content}">
                 <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
             </form>
-
-                <div class="login-and-signup-buttons-container">
-                    <form th:if="${session.LoggedInUser == null}" class="form-login-button-form" method="GET" action="/loginPage">
-                        <button class="login-button">Login</button>
-                    </form>
-                    <form th:if="${session.LoggedInUser == null}" class="form-index-signup-button" method="GET" action="/signUpPage">
-                        <button class="signup-button">Sign Up</button>
-                    </form>
-                    <form class="form-index-submit-recipe-form" method="GET" action="/submitRecipe">
-                        <button class="btn btn-outline-success my-2 my-sm-0">Submit Recipe</button>
-                    </form>
-                </div>
-
+            <div class="login-and-signup-buttons-container">
+                <form th:if="${session.LoggedInUser == null}" class="form-login-button-form" method="GET" action="/loginPage">
+                    <button class="login-button">Login</button>
+                </form>
+                <form th:if="${session.LoggedInUser == null}" class="form-index-signup-button" method="GET" action="/signUpPage">
+                    <button class="signup-button">Sign Up</button>
+                </form>
+                <form class="form-index-submit-recipe-form" method="GET" action="/submitRecipe">
+                    <button class="btn btn-outline-success my-2 my-sm-0">Submit Recipe</button>
+                </form>
+            </div>
         </div>
     </body>
 </html>

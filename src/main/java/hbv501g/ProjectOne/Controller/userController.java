@@ -45,17 +45,6 @@ public class userController {
      */
     @RequestMapping(value = "/loginPage", method = RequestMethod.GET)
     public String loginGET(User user, HttpSession session){
-
-        //System.out.println(userService.findAll());
-        List<User> usernames = userService.findAll();
-        // Eyði öllum users.
-        //System.out.println("Debug - eyði öllum users.");
-        //for (int i = 0; i < (usernames.size()); i++) {
-        //    userService.delete(usernames.get(i));
-        //}
-        // Prenta út alla users.
-        //System.out.println("Debug - prenta út all users og username þeirra.");
-        //for (int i = 0; i < (usernames.size()); i++) {System.out.println(usernames.get(i).getUsername());}
         return "loginPage";
     }
 
@@ -77,9 +66,8 @@ public class userController {
             session.setAttribute("LoggedInUser", exists.getUsername());
             model.addAttribute("LoggedInUser", exists);
             return "redirect:/index";
-            //return "LoggedInUser";
         }
-        return "index";
+        return "redirect:/loginPage";
     }
 
     /**
@@ -141,28 +129,10 @@ public class userController {
     public String saveRecipeMethod(@PathVariable("id") Long id, HttpSession session, Model model){
         String sessionUser = (String) session.getAttribute("LoggedInUser");
         if(sessionUser != null){
-            /*            System.out.println("Debug - saveRecipeMethod - sessionUser != null");
-            System.out.println(model.getAttribute("user"));
-            System.out.println(sessionUser.getUsername());*/
-            //model.addAttribute("LoggedInUser", sessionUser);
-            // Add recipe to favourites.
-            /*            System.out.println(id);
-            System.out.println(recipeService.findByID(id).get().getName());
-            System.out.println(model.getAttribute(id.toString()));
-            System.out.println(session.getId());*/
-            //User currentUser = userService.findByUsername(sessionUser);
             userService.addToFavorites(userService.findByUsername(sessionUser), id);
-            /*
-            currentUser.addToFavoriteRecipes(id);
-            userService.save(currentUser);
-            */
-
             String returnPage = "redirect:/singleRecipePage/" + String.valueOf((id));
-            //System.out.println("Successfully saved a recipe!");
             return returnPage;
-
         }
-        //System.out.println("Debug - saveRecipeMethod - sessionUser = null");
         return "redirect:/loginPage";
     }
 
@@ -177,10 +147,7 @@ public class userController {
     public String removeRecipeFromFavMethod(@PathVariable("id") Long id, HttpSession session, Model model) {
         String sessionUser = (String) session.getAttribute("LoggedInUser");
         userService.removeFromFavourites(userService.findByUsername(sessionUser), id);
-
-
         String returnPage = "redirect:/singleRecipePage/" + String.valueOf((id));
-        //System.out.println("Debug - takki virkaði!");
         return returnPage;
     }
 
@@ -196,9 +163,6 @@ public class userController {
         String sessionUser = (String) session.getAttribute("LoggedInUser");
         if(sessionUser != null){
             HashSet<Long> favouriteRecipes = userService.findByUsername(sessionUser).getFavoriteRecipes();
-
-            //System.out.println("DEBUG - id: " + id);
-
             int index = 1;
             for (Long i : favouriteRecipes) {
                 if (index == id) {
@@ -206,7 +170,6 @@ public class userController {
                 }
                 index++;
             }
-
             return "user";
         }
         return "logInPrompt";
@@ -218,55 +181,20 @@ public class userController {
             //System.out.println("DEBUG - rateRecipe()");
             recipeService.addRating(rating, userService.findByUsername(sessionUser), recipeService.findByID(id).get());
         }
-
         String returnPage = "redirect:/singleRecipePage/" + String.valueOf((id));
         return returnPage;
     }
-    /*
-    @RequestMapping(value = "/singleRecipePage/{id}/{rating}", method=RequestMethod.POST)
-    public String rateRecipePOST(@PathVariable("id") Long id, @PathVariable("rating") int rating, Model model, Rating rtng) {
-        String returnPage = "redirect:/singleRecipePage/" + String.valueOf((id));
-        System.out.println("DEBUG - rateRecipePOST");
-        return returnPage;
-    }
-
-     */
-    /**
-     * Í VINNSLU
-     * @param id
-     * @param session
-     * @param model
-     * @return
-     */
-    /*
-    @RequestMapping(value="/addComment/{id}", method = RequestMethod.GET)
-    public String addComment(@PathVariable("id") Long id, HttpSession session, Model model){
-        String sessionUser = (String) session.getAttribute("LoggedInUser");
-        if(sessionUser != null){
-
-            String returnPage = "redirect:/singleRecipePage/" + String.valueOf((id));
-            System.out.println("commented");
-            return returnPage;
-
-        }
-        //System.out.println("Debug - saveRecipeMethod - sessionUser = null");
-        return "redirect:/loginPage";
-    }
-     */
     @PostMapping("/addComment/{id}")
     public String addComment(@PathVariable("id") Long id, HttpSession session, Model model, @ModelAttribute Comment comment) {
         String sessionUser = (String) session.getAttribute("LoggedInUser");
         if(sessionUser != null){
-
             String returnPage = "redirect:/singleRecipePage/" + String.valueOf((id));
             System.out.println("commented");
             System.out.println(comment.getCommentString());
             recipeService.addComment(recipeService.findByID(id).get(), comment.getCommentString());
             System.out.println("DEBUG - recipe comments size: " + recipeService.findByID(id).get().getComments().size());
             return returnPage;
-
         }
-        //System.out.println("Debug - saveRecipeMethod - sessionUser = null");
         return "redirect:/loginPage";
     }
 }
