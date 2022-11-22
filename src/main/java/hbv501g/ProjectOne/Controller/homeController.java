@@ -92,20 +92,4 @@ public class homeController {
         }
         return "singleRecipePage";
     }
-
-    /**
-     * Mapping of the page where a recipe can be submitted.
-     * @return - A string containing the name of the template to be displayed (singleRecipePage.html in this case).
-     */
-    @RequestMapping(value = "/submitRecipe", method = RequestMethod.GET)
-    public String submitRecipeForm(Model model) {
-        model.addAttribute("newRecipeCreationForm", new RecipeCreationForm());
-        return "submitRecipe";
-    }
-    @RequestMapping(value = "/submitRecipe", method = RequestMethod.POST)
-    public String submitRecipeSubmit(Model model, @ModelAttribute RecipeCreationForm newRecipeCreationForm) {
-        System.out.println("DEBUG - submitRecipeSubmit");
-        recipeService.submitRecipe(newRecipeCreationForm);
-        return "redirect:/index";
-    }
 }

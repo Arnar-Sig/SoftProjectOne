@@ -9,7 +9,10 @@
 </head>
 <body>
     <div class="card-deck mx-auto">
-      <div class="mx-auto d-flex">
+      <div class="mx-auto d-flex" style="display: flex; flex-direction: column;">
+          <a th:href="@{/index}" style="align-self: center;">
+              <img src="/img/lazy.png" alt="..." style="width: 200px; height: 200px">
+          </a>
           <div class="card" style="width: 18rem;">
             <img th:src="@{${'/img/' + recipe.id+'.jpg'}}" class="card-img-top" alt="..."/>
             <div class="card-body">
@@ -52,15 +55,6 @@
               </div>
               <div th:if="${isFavorited != null}">
                   <div class="card-body">
-                      <h6>Leave a comment:</h6>
-                      <form action="#" th:action="@{/addComment/{id}(id=${recipe.id})}" th:object="${comment}" method="post">
-                          <input type="text" th:field="*{commentString}" />
-                          <input type="submit" value="Submit"  class="btn btn-outline-success my-2 my-sm-0"/>
-                      </form>
-                  </div>
-              </div>
-              <div th:if="${isFavorited != null}">
-                  <div class="card-body">
                       <h6>Rate recipe:</h6>
                       <a th:href="@{/singleRecipePage/1/{id}(id=${recipe.id})}">
                           <button class="btn btn-outline-success my-2 my-sm-0" type="button">1</button>
@@ -79,23 +73,21 @@
                       </a>
                   </div>
               </div>
-
-
+              <div th:if="${isFavorited != null}">
+                  <div class="card-body">
+                      <h6>Leave a comment:</h6>
+                      <form action="#" th:action="@{/addComment/{id}(id=${recipe.id})}" th:object="${comment}" method="post">
+                          <input type="text" th:field="*{commentString}" />
+                          <input type="submit" value="Submit"  class="btn btn-outline-success my-2 my-sm-0"/>
+                      </form>
+                  </div>
+              </div>
               <div class="card-body">
                   <h6>Comments:</h6>
                   <ul class="list-group list-group-flush" th:each="comment: ${recipe.comments}">
                       <li class="list-group-item" th:text="${comment}"></li>
                   </ul>
               </div>
-
-              <!--<div th:if="${isFavorited == false}">
-                  <a th:href="@{/recipeSaved/{id}(id=${recipe.id})}">
-                    <button class="btn btn-outline-success my-2 my-sm-0" type="button">
-                      Save Recipe
-                    </button>
-                  </a>
-              </div>-->
-              <!--<button type="button" th:onclick="|window.location.href='/recipeSaved'|" th:object="${model}">Save Recipe</button>-->
           </div>
       </div>
     </div>

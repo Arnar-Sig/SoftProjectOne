@@ -68,4 +68,5 @@ public interface UserService {
      * @param id - Id of recipe to be removed from the user's list of favourite recipes.
      */
     HashSet<Long> removeFromFavourites(User user, Long id);
+    Boolean userExistsWithUsername(String username);
 }

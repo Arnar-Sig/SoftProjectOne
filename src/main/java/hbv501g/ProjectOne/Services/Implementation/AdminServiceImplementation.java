@@ -5,6 +5,7 @@ import hbv501g.ProjectOne.Entities.Recipe;
 import hbv501g.ProjectOne.Repositories.RecipeRepository;
 import hbv501g.ProjectOne.Repositories.UserRepository;
 import hbv501g.ProjectOne.Services.AdminService;
+import hbv501g.ProjectOne.Services.RecipeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,11 +15,13 @@ import java.util.ArrayList;
 public class AdminServiceImplementation implements AdminService {
     private UserRepository userRepository;
     private RecipeRepository recipeRepository;
+    private RecipeService recipeService;
 
     @Autowired
-    public AdminServiceImplementation(RecipeRepository recipeRepository, UserRepository userRepository){
+    public AdminServiceImplementation(RecipeRepository recipeRepository, UserRepository userRepository, RecipeService recipeService){
         this.recipeRepository = recipeRepository;
         this.userRepository = userRepository;
+        this.recipeService = recipeService;
     }
 
     /**
@@ -73,7 +76,7 @@ public class AdminServiceImplementation implements AdminService {
         ArrayList<Recipe> allRecipes = (ArrayList<Recipe>) recipeRepository.findAll();
         for (int i = 0; i < allRecipes.size(); i++) {
             allRecipes.get(i).getRatings().clear();
-            allRecipes.get(i).updateRating();
+            recipeService.updateRating(allRecipes.get(i));
             allRecipes.get(i).getRaters().clear();
             recipeRepository.save(allRecipes.get(i));
         }

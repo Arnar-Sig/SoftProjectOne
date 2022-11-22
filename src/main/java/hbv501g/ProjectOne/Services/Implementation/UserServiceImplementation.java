@@ -6,6 +6,7 @@ import hbv501g.ProjectOne.Services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 
@@ -136,5 +137,14 @@ public class UserServiceImplementation implements UserService {
         return null;
     }
 
-
+    @Override
+    public Boolean userExistsWithUsername(String username) {
+        ArrayList<User> allUsers= (ArrayList<User>) userRepository.findAll();
+        for (User u : allUsers) {
+            if (u.getUsername().equals(username)) {
+                return true;
+            }
+        }
+        return false;
+    }
 }

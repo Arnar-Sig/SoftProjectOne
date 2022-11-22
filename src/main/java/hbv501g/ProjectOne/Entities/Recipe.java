@@ -34,27 +34,12 @@ public class Recipe {
 	public void setUser(User user) {
 		this.user = user;
 	}
-
-
 	public int getRating() {
 		return rating;
 	}
 
-	public void updateRating() {
-		Double sum = 0.0;
-		for (int i : this.ratings) {
-			sum += i;
-		}
-		Double avg = sum / this.ratings.size();
-		if (avg < 0.5) {this.rating = 0;}
-		else if (avg < 1.5) {this.rating = 1;}
-		else if (avg < 2.5) {this.rating = 2;}
-		else if (avg < 3.5) {this.rating = 3;}
-		else if (avg < 4.5) {this.rating = 4;}
-		else {this.rating = 5;}
-		System.out.println("DEBUG - sum: " + sum);
-		System.out.println("DEBUG - avg: " + avg);
-		System.out.println("DEBUG - ratings.size(): " + this.ratings.size());
+	public void setRating(int rating) {
+		this.rating = rating;
 	}
 	public void addRating(int rating, String username) {
 		System.out.println("DEBUG - addRating()");
@@ -64,7 +49,6 @@ public class Recipe {
 			this.raters.add(username);
 		}
 	}
-
 	public HashSet<String> getIngredients() {
 		return ingredients;
 	}
@@ -78,16 +62,12 @@ public class Recipe {
 	public String getName() {
 		return name;
 	}
-
 	public HashSet<Integer> getRatings() {
 		return ratings;
 	}
-
 	public HashSet<String> getRaters() {
 		return raters;
 	}
-
-	public Recipe() {}
 
 	/**
 	 * Constructor for Recipe object.
@@ -104,10 +84,18 @@ public class Recipe {
 		this.ratings = new HashSet<>();
 		this.comments = new HashSet<>();
 	}
+	/**
+	 * Generic constructor without parameters.
+	 */
+	public Recipe() {}
+
+	/**
+	 * Adds a comment to the recipe.
+	 * @param comment - The comment in String-form.
+	 */
 	public void AddComment(String comment) {
 		this.comments.add(comment);
 	}
-
 
 	/**
 	 * Describes the recipe in String format.
