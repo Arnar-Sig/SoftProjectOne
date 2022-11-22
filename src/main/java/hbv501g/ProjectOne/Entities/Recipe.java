@@ -17,6 +17,7 @@ public class Recipe {
 	private Long id;
 	private HashSet<String> ingredients;
 	private String instructions;
+	private String imageName;
 	private String name;
 	private HashSet<String> comments;
 	@ManyToOne(fetch = FetchType.LAZY)
@@ -69,13 +70,21 @@ public class Recipe {
 		return raters;
 	}
 
+	public String getImageName() {
+		return imageName;
+	}
+
+	public void setImageName(String imageName) {
+		this.imageName = imageName;
+	}
+
 	/**
 	 * Constructor for Recipe object.
 	 * @param name - Name of the recipe.
 	 * @param ingredients - Ingredients in the recipe.
 	 * @param instructions - Instructions on how to create the recipe.
 	 */
-	public Recipe(String name, HashSet<String> ingredients, String instructions) {
+	public Recipe(String name, HashSet<String> ingredients, String instructions, String imageName) {
 		this.ingredients = ingredients;
 		this.instructions = instructions;
 		this.name = name;
@@ -83,6 +92,7 @@ public class Recipe {
 		this.raters = new HashSet<>();
 		this.ratings = new HashSet<>();
 		this.comments = new HashSet<>();
+		this.imageName = imageName;
 	}
 	/**
 	 * Generic constructor without parameters.

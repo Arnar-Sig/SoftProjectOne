@@ -169,7 +169,7 @@ public class RecipeServiceImplementation implements RecipeService {
                 System.out.println(newRecipeCreationForm.getIngredient4());
             }
 
-            Recipe r = new Recipe(newRecipeCreationForm.getName(), newRecipeIngredients, newRecipeCreationForm.getInstructions());
+            Recipe r = new Recipe(newRecipeCreationForm.getName(), newRecipeIngredients, newRecipeCreationForm.getInstructions(), "placeholder");
             save(r);
         }
     }
