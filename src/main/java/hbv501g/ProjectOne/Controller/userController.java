@@ -174,6 +174,16 @@ public class userController {
         }
         return "logInPrompt";
     }
+
+    /**
+     * Reads recipe id and rating from the URL and sends it to the RecipeService for establishing a rating
+     * for the recipe and saving it to the database.
+     * @param id - The id of the recipe to be rated.
+     * @param rating - The rating to be given to the recipe.
+     * @param session - A HttpSession object, used to get information about the current session.
+     * @param model - The model currently being used.
+     * @return - A string containing the name of the template to be displayed.
+     */
     @RequestMapping(value = "/singleRecipePage/{rating}/{id}", method=RequestMethod.GET)
     public String rateRecipe(@PathVariable("id") Long id, @PathVariable("rating") int rating, Model model, HttpSession session) {
         String sessionUser = (String) session.getAttribute("LoggedInUser");
@@ -184,6 +194,16 @@ public class userController {
         String returnPage = "redirect:/singleRecipePage/" + String.valueOf((id));
         return returnPage;
     }
+
+    /**
+     * Takes ID from the URL and a Comment object from the model and sends them to the RecipeService where
+     * the comment is fixed to the recipe in the database.
+     * @param id - The ID of the recipe to be commented on.
+     * @param session - A HttpSession object, used to get information about the current session.
+     * @param model - The model currently being used.
+     * @param comment - A comment object containing the comment to be applied to the recipe.
+     * @return - A string containing the name of the template to be displayed.
+     */
     @PostMapping("/addComment/{id}")
     public String addComment(@PathVariable("id") Long id, HttpSession session, Model model, @ModelAttribute Comment comment) {
         String sessionUser = (String) session.getAttribute("LoggedInUser");
