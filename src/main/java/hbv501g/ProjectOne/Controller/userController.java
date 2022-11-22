@@ -86,6 +86,12 @@ public class userController {
         return "redirect:/singleRecipePage";
     }
 
+    @RequestMapping(value = "/logout", method = RequestMethod.GET)
+    public String logout(HttpSession session, Model model){
+        session.invalidate();
+        return "redirect:/index";
+    }
+
     /**
      * Mapping for the signup page.
      * @param user - User to be created.
