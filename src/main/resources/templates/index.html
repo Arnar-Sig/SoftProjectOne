@@ -31,15 +31,22 @@
         </style>
     </head>
     <body>
-        <div th:if="${session.LoggedInUser != null}">
-            <h5> Logged in as:
-                <p th:text="${session.LoggedInUser}"></p>
-            </h5>
+        <div class="sloth-nav-container" style="display: flex; justify-content: center;">
+            <div class="sloth-nav-container-left" style="flex: 1">
+                <div th:if="${session.LoggedInUser != null}" style="flex: 1;">
+                    <h5> Logged in as:
+                        <p th:text="${session.LoggedInUser}"></p>
+                    </h5>
+                </div>
+            </div>
+            <div class="sloth-nav-container-center">
+                <a th:href="@{/index}">
+                    <img src="/img/lazy.png" alt="..." style="width: 200px; height: 200px">
+                </a>
+            </div>
+            <div class="sloth-nav-container-right" style="flex: 1;"> </div>
         </div>
         <div class="text-center mb-4">
-            <a th:href="@{/index}">
-                <img src="/img/lazy.png" alt="..." style="width: 200px; height: 200px">
-            </a>
             <h1 class="mb-4 mt-4">Lazybones Recipes</h1>
             <form class="form-inline d-block" action="#" th:action="@{/recipePage}" th:object="${search}" method="post">
                 <input class="form-control mr-sm-2" type="text" placeholder="Leave empty to browse" th:field="*{content}">
