@@ -32,7 +32,8 @@ public class Main {
 	 * Temporary code for adding recipes to the database.
 	 */
 
-/*
+
+	/*
 	// ONLY USE TO MANAGE CORE RECIPES //
 	@Bean
 	public CommandLineRunner demo(RecipeRepository repository) {
@@ -64,6 +65,7 @@ public class Main {
 
 		};
 	}
-	*/
+
+	 */
 
 }

@@ -41,9 +41,9 @@ public class adminController {
         return "admin";
     }
 
-    @RequestMapping(value = "/adminDeleteCustomRecipes", method = RequestMethod.GET)
+    @RequestMapping(value = "/adminDeleteAllRecipes", method = RequestMethod.GET)
     public String adminDeleteCustomRecipes(Model model) {
-        adminService.deleteAllCustomRecipes();
+        adminService.deleteAllRecipes();
         return "admin";
     }
     @RequestMapping(value = "/adminDeleteAllComments", method = RequestMethod.GET)
