@@ -229,6 +229,10 @@ public class userController {
      */
     @RequestMapping(value = "/user", method = RequestMethod.GET)
     public String userGet(HttpSession session, Model model) {
+        String sessionUser = (String) session.getAttribute("LoggedInUser");
+        if(sessionUser == null){
+            return "redirect:/loginPage";
+        }
         return "user";
     }
 }
