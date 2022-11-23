@@ -14,7 +14,7 @@
     <a th:href="@{/index}" style="align-self: center;">
       <img src="/img/lazy.png" alt="..." style="width: 200px; height: 200px">
     </a>
-    <div class="mx-auto d-flex" id="flex-wrap-me">
+    <div class="mx-auto d-flex flex-wrap w-75 justify-content-center" id="flex-wrap-me">
       <div th:each="recipe: ${all}">
         <div class="card" style="width:18rem;">
           <a th:href="@{/singleRecipePage/{id}(id=${recipe.id})}">
