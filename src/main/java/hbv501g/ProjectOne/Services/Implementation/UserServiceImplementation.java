@@ -147,4 +147,9 @@ public class UserServiceImplementation implements UserService {
         }
         return false;
     }
+
+    @Override
+    public Boolean hasFavourites(User user) {
+        return (!user.getFavoriteRecipes().isEmpty());
+    }
 }

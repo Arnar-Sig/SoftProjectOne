@@ -69,4 +69,5 @@ public interface UserService {
      */
     HashSet<Long> removeFromFavourites(User user, Long id);
     Boolean userExistsWithUsername(String username);
+    Boolean hasFavourites(User user);
 }

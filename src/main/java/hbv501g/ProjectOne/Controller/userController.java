@@ -233,6 +233,11 @@ public class userController {
         if(sessionUser == null){
             return "redirect:/loginPage";
         }
+
+        // TODO - Get favourite recipes, add them to model, so they can be used in a POST method.
+        User user = userService.findByUsername(sessionUser);
+        System.out.println("DEBUG - user has favourites?: " + userService.hasFavourites(user));
+
         return "user";
     }
 }
