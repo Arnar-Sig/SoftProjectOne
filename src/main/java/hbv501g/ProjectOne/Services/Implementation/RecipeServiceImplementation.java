@@ -49,15 +49,17 @@ public class RecipeServiceImplementation implements RecipeService {
 
         // If search string is empty
         if(search.isEmpty()){
-            System.out.println("Empty search string!");
+            System.out.println("Empty search string.");
             filteredRecipes = allRecipes;
         }
 
         // If search string is one word
         else if(search.split("\\s+").length == 1){
             System.out.println("One word search string: " + search);
+
             for (Recipe r:allRecipes){
-                if(r.getName().equalsIgnoreCase(search)){
+                String name = r.getName().toLowerCase();
+                if(name.contains(search.toLowerCase())){
                     filteredRecipes.add(r);
                 }
             }
@@ -68,6 +70,11 @@ public class RecipeServiceImplementation implements RecipeService {
             System.out.println("Multiword search string.");
             String[] splitted = search.split("[\\s,]+");
 
+            //Make the ingredients we have lower case
+            for (int i = 0; i < splitted.length; i++) {
+                splitted[i] = splitted[i].toLowerCase();
+            }
+
             // Check for each recipe if the search parameters contain all the ingredients necessary, and only then add
             // it to the filtered list
             for(Recipe r:allRecipes){
@@ -75,6 +82,7 @@ public class RecipeServiceImplementation implements RecipeService {
                 HashSet<String> ingredientsWeGot =  new HashSet<>(Arrays.asList(splitted));
                 int sizeSoFar = 0;
                 for(String ingr:ingredientsToMatch){
+                    ingr = ingr.toLowerCase();
                     if(sizeSoFar == ingredientsToMatch.size()){
                         filteredRecipes.add(r);
                         break;
