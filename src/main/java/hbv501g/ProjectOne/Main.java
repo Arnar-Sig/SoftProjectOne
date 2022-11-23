@@ -32,7 +32,7 @@ public class Main {
 	/**
 	 * Temporary code for adding recipes to the database.
 	 */
-
+	/*
 	// ONLY USE TO MANAGE CORE RECIPES //
 	@Bean
 	public CommandLineRunner demo(RecipeRepository repository) {
@@ -50,11 +50,12 @@ public class Main {
 			repo.save(new Recipe("Porridge", ingredients, "Add small amount of water and bring it to a boil. " +
 					"Then add the rice and milk and let it cook at low heat. Add raisings once it starts getting thicker.", "Porridge"));
 
-			HashSet<String> ingredients2 = new HashSet<>(); ingredients2.add("Minced-Meat"); ingredients2.add("Spaghetti"); ingredients2.add("Pasta-Sauce");
-			repo.save(new Recipe("Spaghetti", ingredients2, "Boil spaghetti. Cook the meat until brown and add sauce. Combine.","Spaghetti"));
+			HashSet<String> ingredients2 = new HashSet<>(); ingredients2.add("Minced-Meat"); ingredients2.add("Spaghetti"); ingredients2.add("Pasta-Sauce"); ingredients2.add("Vegetable");
+			repo.save(new Recipe("Spaghetti", ingredients2, "Boil spaghetti. Cook the meat until brown and add sauce. Add vegetables if desired." +
+					" Combine.","Spaghetti"));
 
 			HashSet<String> ingredients3 = new HashSet<>(); ingredients3.add("Tuna"); ingredients3.add("Pasta"); ingredients3.add("Egg"); ingredients3.add("Vegetable");
-			repo.save(new Recipe("Tuna-Egg-Pasta", ingredients3, "Boil eggs and pasta for 10 minutes. Combine in a bowl and add tuna and veggies.", "Tuna-Egg-Pasta"));
+			repo.save(new Recipe("Tuna-Egg-Pasta", ingredients3, "Boil eggs and pasta for 10 minutes. Combine in a bowl and add tuna and vegetables.", "Tuna-Egg-Pasta"));
 
 			HashSet<String> ingredients4 = new HashSet<>(); ingredients4.add("Noodles"); ingredients4.add("Cheese"); ingredients4.add("Egg");
 			repo.save(new Recipe("Slightly better noodles", ingredients4, "Fry an egg. Put noodles and sauce in a pan. " +
@@ -65,7 +66,7 @@ public class Main {
 					"Mix eggs in a bowl. Fry in a pan on low heat. When bottom of egg starts to cook add any vegetables and leftovers. Fold the base into a half moon shape.",
 					"LeftoverOmelette"));
 
-			HashSet<String> ingredients6 = new HashSet<>(Arrays.asList("Chicken-Breast", "Peanuts", "Noodles", "Vegetable"));
+			HashSet<String> ingredients6 = new HashSet<>(Arrays.asList("Chicken-Breast", "Peanuts", "Noodles", "Vegetable", "Bean-Sauce"));
 			repo.save(new Recipe("Chicken Noodles stir-fry", ingredients6, "Grind up the peanuts. " +
 					"Cook chicken in a pan with bean sauce. " +
 					"Boil the noodles and add vegetables to the pot. " +
@@ -74,12 +75,16 @@ public class Main {
 
 			HashSet<String> ingredients7= new HashSet<>(Arrays.asList("Spaghetti", "Cheese", "Garlic", "Olive-Oil"));
 			repo.save(new Recipe("Spaghetti aglio e olio", ingredients7, "Cook pasta. Cook garlic in pan with olive oil until golden. Mix pasta with garlic in pan." +
-					"Add any spices or herbs.",
+					" Add any spices or herbs.",
 					"aglio-e-olio"));
 
+			HashSet<String> ingredients8= new HashSet<>(Arrays.asList("Pasta", "Garlic", "Mushroom", "Cheese", "Creme-Fraiche"));
+			repo.save(new Recipe("Mushroom Garlic Pasta", ingredients8, "Cook pasta. Fry garlic and mushrooms. Put pasta into pan and mix in cheese and" +
+					" creme fraiche.",
+					"mushroom-pasta"));
 		};
 	}
 
-
+*/
 
 }
