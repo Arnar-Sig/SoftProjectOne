@@ -235,13 +235,20 @@ public class userController {
             return "redirect:/loginPage";
         }
 
-        // TODO - Get favourite recipes, add them to model, so they can be used in a POST method.
         User user = userService.findByUsername(sessionUser);
-        System.out.println("DEBUG - user has favourites?: " + userService.hasFavourites(user));
+        //System.out.println("DEBUG - user has favourites?: " + userService.hasFavourites(user));
         ArrayList<Recipe> favouriteRecipes = userService.getFavourites(user);
-        System.out.println("DEBUG - favouriteRecipes ArrayList empty?: " + favouriteRecipes.isEmpty());
-        System.out.println("DEBUG - favouriteRecipes ArrayList size: " + favouriteRecipes.size());
+        //System.out.println("DEBUG - favouriteRecipes ArrayList empty?: " + favouriteRecipes.isEmpty());
+        //System.out.println("DEBUG - favouriteRecipes ArrayList size: " + favouriteRecipes.size());
+        model.addAttribute("favouriteRecipes", favouriteRecipes);
 
         return "user";
     }
+/**
+    @RequestMapping(value = "/user", method = RequestMethod.POST)
+    public String userPost(HttpSession session, Model model) {
+        System.out.println("DEBUG - userPost()");
+        return "user";
+    }
+    **/
 }

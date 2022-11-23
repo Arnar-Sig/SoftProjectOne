@@ -7,8 +7,41 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 <body>
-    <div class="favouriteRecipesContainer">
-        User
+    <div class="sloth-nav-container" style="display: flex; justify-content: center;">
+    <div class="sloth-nav-container-left" style="flex: 1">
+        <div th:if="${session.LoggedInUser != null}" style="flex: 1;">
+            <h5> Logged in as:
+                <p th:text="${session.LoggedInUser}"></p>
+            </h5>
+        </div>
+    </div>
+    <div class="sloth-nav-container-center">
+        <a th:href="@{/index}">
+            <img src="/img/lazy.png" alt="..." style="width: 200px; height: 200px">
+        </a>
+    </div>
+    <div class="sloth-nav-container-right" style="flex: 1;"> </div>
+</div>
+    <div class="card-deck mx-auto" style="display: flex; flex-direction: column;">
+        <div class="mx-auto d-flex" id="flex-wrap-me">
+            <div th:each="recipe: ${favouriteRecipes}">
+                <div class="card" style="width:18rem;">
+                    <a th:href="@{/singleRecipePage/{id}(id=${recipe.id})}">
+                        <!-- OLD <a th:href="@{/singleRecipePage/?id={id}(id=${recipe.id})}">-->
+                        <img th:src="@{${'/img/' + recipe.imageName+'.jpg'}}" class="card-img-top" style="width: 100%; height: 15vw; object-fit: cover;" alt="..."/>
+                    </a>
+                    <div class="card-body">
+                        <h5 class="card-title" th:text="${recipe.name}"></h5>
+                    </div>
+                    <ul class="list-group list-group-flush" th:each="ingredient: ${recipe.ingredients}">
+                        <li class="list-group-item" th:text="${ingredient}"></li>
+                    </ul>
+                    <div class="card-body">
+                        <p class="card-text" th:text="${recipe.instructions}"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </body>
 </html>
