@@ -223,4 +223,12 @@ public class userController {
         }
         return "redirect:/loginPage";
     }
+
+    /**
+     * Mapping for user page.
+     */
+    @RequestMapping(value = "/user", method = RequestMethod.GET)
+    public String userGet(HttpSession session, Model model) {
+        return "user";
+    }
 }
