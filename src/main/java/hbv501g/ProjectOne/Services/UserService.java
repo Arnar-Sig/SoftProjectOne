@@ -1,7 +1,9 @@
 package hbv501g.ProjectOne.Services;
 
+import hbv501g.ProjectOne.Entities.Recipe;
 import hbv501g.ProjectOne.Entities.User;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 
@@ -70,4 +72,5 @@ public interface UserService {
     HashSet<Long> removeFromFavourites(User user, Long id);
     Boolean userExistsWithUsername(String username);
     Boolean hasFavourites(User user);
+    ArrayList<Recipe> getFavourites(User user);
 }

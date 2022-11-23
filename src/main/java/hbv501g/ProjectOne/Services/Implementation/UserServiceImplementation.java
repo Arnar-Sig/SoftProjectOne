@@ -1,13 +1,17 @@
 package hbv501g.ProjectOne.Services.Implementation;
 
+import hbv501g.ProjectOne.Entities.Recipe;
 import hbv501g.ProjectOne.Entities.User;
+import hbv501g.ProjectOne.Repositories.RecipeRepository;
 import hbv501g.ProjectOne.Repositories.UserRepository;
+import hbv501g.ProjectOne.Services.RecipeService;
 import hbv501g.ProjectOne.Services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
 
 /**
@@ -19,13 +23,16 @@ public class UserServiceImplementation implements UserService {
      * Variables.
      */
     private UserRepository userRepository;
+    private RecipeService recipeService;
+    private RecipeRepository recipeRepository;
 
     /**
      * Constructor.
      */
     @Autowired
-    public UserServiceImplementation(UserRepository userRepository){
+    public UserServiceImplementation(UserRepository userRepository, RecipeService recipeService, RecipeRepository recipeRepository){
         this.userRepository = userRepository;
+        this.recipeService = recipeService;
     }
 
     /**
@@ -151,5 +158,22 @@ public class UserServiceImplementation implements UserService {
     @Override
     public Boolean hasFavourites(User user) {
         return (!user.getFavoriteRecipes().isEmpty());
+    }
+
+    @Override
+    public ArrayList<Recipe> getFavourites(User user) {
+
+        ArrayList<Recipe> favRecipes = new ArrayList<>();
+        if (hasFavourites(user)) {
+            HashSet<Long> favRecipesIds = user.getFavoriteRecipes();
+            Iterator<Long> it = favRecipesIds.iterator();
+            while (it.hasNext()) {
+                // TODO - populate favRecipes with Recipes from IDs in favRecipesIds.
+            }
+        }
+
+
+
+        return null;
     }
 }
