@@ -65,6 +65,9 @@
                 <form th:if="${session.LoggedInUser != null}" class="form-index-submit-recipe-form" method="GET" action="/submitRecipe">
                     <button class="btn btn-outline-success my-2 my-sm-0">Submit Recipe</button>
                 </form>
+                <form th:if="${session.LoggedInUser != null}" class="form-index-submit-recipe-form" method="GET" action="/user">
+                    <button class="btn btn-outline-success my-2 my-sm-0">User</button>
+                </form>
             </div>
         </div>
     </body>
