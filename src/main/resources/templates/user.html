@@ -23,11 +23,10 @@
     <div class="sloth-nav-container-right" style="flex: 1;"> </div>
 </div>
     <div class="card-deck mx-auto" style="display: flex; flex-direction: column;">
-        <div class="mx-auto d-flex" id="flex-wrap-me">
+        <div class="mx-auto d-flex" id="flex-wrap-me" style="flex-wrap: wrap">
             <div th:each="recipe: ${favouriteRecipes}">
                 <div class="card" style="width:18rem;">
                     <a th:href="@{/singleRecipePage/{id}(id=${recipe.id})}">
-                        <!-- OLD <a th:href="@{/singleRecipePage/?id={id}(id=${recipe.id})}">-->
                         <img th:src="@{${'/img/' + recipe.imageName+'.jpg'}}" class="card-img-top" style="width: 100%; height: 15vw; object-fit: cover;" alt="..."/>
                     </a>
                     <div class="card-body">
