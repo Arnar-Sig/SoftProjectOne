@@ -12,6 +12,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 
@@ -237,6 +238,9 @@ public class userController {
         // TODO - Get favourite recipes, add them to model, so they can be used in a POST method.
         User user = userService.findByUsername(sessionUser);
         System.out.println("DEBUG - user has favourites?: " + userService.hasFavourites(user));
+        ArrayList<Recipe> favouriteRecipes = userService.getFavourites(user);
+        System.out.println("DEBUG - favouriteRecipes ArrayList empty?: " + favouriteRecipes.isEmpty());
+        System.out.println("DEBUG - favouriteRecipes ArrayList size: " + favouriteRecipes.size());
 
         return "user";
     }

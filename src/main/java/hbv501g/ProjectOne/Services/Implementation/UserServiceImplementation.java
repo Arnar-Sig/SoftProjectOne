@@ -160,20 +160,31 @@ public class UserServiceImplementation implements UserService {
         return (!user.getFavoriteRecipes().isEmpty());
     }
 
+    /**
+     * This method needs to be improved. There should be a way to get a Recipe by ID without having to iterate
+     *  through every recipe. The current way that is done returns an Optional object, which conflicts with
+     *  the methods that expect a Recipe object but get an Optional object instead.
+     * @param user
+     * @return
+     */
     @Override
     public ArrayList<Recipe> getFavourites(User user) {
 
         ArrayList<Recipe> favRecipes = new ArrayList<>();
+        ArrayList<Recipe> allRecipes = recipeService.getAll();
         if (hasFavourites(user)) {
             HashSet<Long> favRecipesIds = user.getFavoriteRecipes();
             Iterator<Long> it = favRecipesIds.iterator();
             while (it.hasNext()) {
-                // TODO - populate favRecipes with Recipes from IDs in favRecipesIds.
+                Long idNext = it.next();
+                for (Recipe r : allRecipes) {
+                    if (r.getId().equals(idNext)) {
+                        favRecipes.add(r);
+                    }
+                }
             }
         }
 
-
-
-        return null;
+        return favRecipes;
     }
 }

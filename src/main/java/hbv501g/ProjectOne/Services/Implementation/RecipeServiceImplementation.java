@@ -9,6 +9,7 @@ import hbv501g.ProjectOne.Services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.lang.reflect.Array;
 import java.util.*;
 
 /**
@@ -197,5 +198,15 @@ public class RecipeServiceImplementation implements RecipeService {
             }
         }
         return false;
+    }
+
+    @Override
+    public ArrayList<Recipe> getAll() {
+        List<Recipe> allRecipes = recipeRepository.findAll();
+        ArrayList<Recipe> allRecipesArrayList = new ArrayList<>();
+        for (Recipe r : allRecipes) {
+            allRecipesArrayList.add(r);
+        }
+        return allRecipesArrayList;
     }
 }
