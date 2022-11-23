@@ -12,6 +12,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 
@@ -223,4 +224,31 @@ public class userController {
         }
         return "redirect:/loginPage";
     }
+
+    /**
+     * Mapping for user page.
+     */
+    @RequestMapping(value = "/user", method = RequestMethod.GET)
+    public String userGet(HttpSession session, Model model) {
+        String sessionUser = (String) session.getAttribute("LoggedInUser");
+        if(sessionUser == null){
+            return "redirect:/loginPage";
+        }
+
+        User user = userService.findByUsername(sessionUser);
+        //System.out.println("DEBUG - user has favourites?: " + userService.hasFavourites(user));
+        ArrayList<Recipe> favouriteRecipes = userService.getFavourites(user);
+        //System.out.println("DEBUG - favouriteRecipes ArrayList empty?: " + favouriteRecipes.isEmpty());
+        //System.out.println("DEBUG - favouriteRecipes ArrayList size: " + favouriteRecipes.size());
+        model.addAttribute("favouriteRecipes", favouriteRecipes);
+
+        return "user";
+    }
+/**
+    @RequestMapping(value = "/user", method = RequestMethod.POST)
+    public String userPost(HttpSession session, Model model) {
+        System.out.println("DEBUG - userPost()");
+        return "user";
+    }
+    **/
 }

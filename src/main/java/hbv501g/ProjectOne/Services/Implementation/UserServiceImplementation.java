@@ -1,13 +1,17 @@
 package hbv501g.ProjectOne.Services.Implementation;
 
+import hbv501g.ProjectOne.Entities.Recipe;
 import hbv501g.ProjectOne.Entities.User;
+import hbv501g.ProjectOne.Repositories.RecipeRepository;
 import hbv501g.ProjectOne.Repositories.UserRepository;
+import hbv501g.ProjectOne.Services.RecipeService;
 import hbv501g.ProjectOne.Services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
 
 /**
@@ -19,13 +23,16 @@ public class UserServiceImplementation implements UserService {
      * Variables.
      */
     private UserRepository userRepository;
+    private RecipeService recipeService;
+    private RecipeRepository recipeRepository;
 
     /**
      * Constructor.
      */
     @Autowired
-    public UserServiceImplementation(UserRepository userRepository){
+    public UserServiceImplementation(UserRepository userRepository, RecipeService recipeService, RecipeRepository recipeRepository){
         this.userRepository = userRepository;
+        this.recipeService = recipeService;
     }
 
     /**
@@ -146,5 +153,38 @@ public class UserServiceImplementation implements UserService {
             }
         }
         return false;
+    }
+
+    @Override
+    public Boolean hasFavourites(User user) {
+        return (!user.getFavoriteRecipes().isEmpty());
+    }
+
+    /**
+     * This method needs to be improved. There should be a way to get a Recipe by ID without having to iterate
+     *  through every recipe. The current way that is done returns an Optional object, which conflicts with
+     *  the methods that expect a Recipe object but get an Optional object instead.
+     * @param user
+     * @return
+     */
+    @Override
+    public ArrayList<Recipe> getFavourites(User user) {
+
+        ArrayList<Recipe> favRecipes = new ArrayList<>();
+        ArrayList<Recipe> allRecipes = recipeService.getAll();
+        if (hasFavourites(user)) {
+            HashSet<Long> favRecipesIds = user.getFavoriteRecipes();
+            Iterator<Long> it = favRecipesIds.iterator();
+            while (it.hasNext()) {
+                Long idNext = it.next();
+                for (Recipe r : allRecipes) {
+                    if (r.getId().equals(idNext)) {
+                        favRecipes.add(r);
+                    }
+                }
+            }
+        }
+
+        return favRecipes;
     }
 }
