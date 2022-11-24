@@ -36,7 +36,7 @@ public class adminController {
     /**
      * Mapping of the admin page.
      * @param model - The model currently being used.
-     * @return - Returns a String containing the name of the template to be displayed (admin.html for this method).
+     * @return - Returns a String containing the name of the template to be displayed.
      */
     @RequestMapping(value = "/admin", method = RequestMethod.GET)
     public String adminGet(Model model) {
@@ -46,7 +46,7 @@ public class adminController {
     /**
      * Mapping for deleting all recipes.
      * @param model - The model currently being used.
-     * @return
+     * @return Returns a String containing the name of the template to be displayed
      */
     @RequestMapping(value = "/adminDeleteAllRecipes", method = RequestMethod.GET)
     public String adminDeleteCustomRecipes(Model model) {
