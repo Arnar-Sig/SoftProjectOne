@@ -5,11 +5,9 @@ import hbv501g.ProjectOne.Entities.RecipeCreationForm;
 import hbv501g.ProjectOne.Entities.User;
 import hbv501g.ProjectOne.Repositories.RecipeRepository;
 import hbv501g.ProjectOne.Services.RecipeService;
-import hbv501g.ProjectOne.Services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.lang.reflect.Array;
 import java.util.*;
 
 /**
@@ -143,8 +141,8 @@ public class RecipeServiceImplementation implements RecipeService {
     }
 
     @Override
-    public Recipe save(Recipe recipe) {
-        return recipeRepository.save(recipe);
+    public void save(Recipe recipe) {
+        recipeRepository.save(recipe);
     }
 
     @Override
