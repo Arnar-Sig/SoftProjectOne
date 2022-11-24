@@ -16,7 +16,6 @@ import java.util.HashSet;
 
 /**
  * General controller class for home page and search feature.
- * JAVADOC finished.
  */
 @Controller
 public class homeController {
@@ -41,7 +40,7 @@ public class homeController {
      * Mapping of the front page.
      * @param session - A HttpSession object, used to get information about the current session.
      * @param model - The model currently being used.
-     * @return - Returns a String containing the name of the template to be displayed (index.html for this method).
+     * @return - Returns a String containing the name of the template to be displayed.
      */
     @GetMapping({"/", "/index"})
     public String homePage(HttpSession session, Model model) {
@@ -51,7 +50,8 @@ public class homeController {
         return "index";
     }
 
-    /** Mapping of the search feature.
+    /**
+     *  Mapping of the search feature.
      *  Happens when the search button is clicked.
      *  The search-parameters are retrieved and the database is
      *  queried for the recipes that match, which is then attached
@@ -59,6 +59,7 @@ public class homeController {
      *  @param search - The SearchModel object used to search the database.
      *  @param session - A HttpSession object, used to get information about the current session.
      *  @param model - The model currently being used.
+     *  @return - Returns a String containing the name of the template to be displayed.
      */
     @RequestMapping(value = "/recipePage", method = RequestMethod.POST)
     public String SearchSubmitPOST(SearchModel search, HttpSession session, Model model){
@@ -67,7 +68,8 @@ public class homeController {
 
     }
 
-    /** Link to a page with only a single recipe.
+    /**
+     *  Mapping of the page which used to view a single recipe.
      *  Retrieves the id parameter from the url, queries the
      *  database for the recipe with the matching id and adds
      *  it to the model. This model is then sent to the
@@ -75,7 +77,7 @@ public class homeController {
      *  @param id - The id of the recipe to be displayed.
      *  @param session - A HttpSession object, used to get information about the current session.
      *  @param model - The model currently being used.
-     *  @return - A string containing the name of the template to be displayed (singleRecipePage.html in this case).
+     *  @return - A string containing the name of the template to be displayed.
      */
     @RequestMapping(value = "/singleRecipePage/{id}", method = RequestMethod.GET)
     public String viewSingleRecipe(@PathVariable("id") Long id, HttpSession session, Model model) {
@@ -94,10 +96,10 @@ public class homeController {
     }
 
     /**
-     * Mapping for the error page.
+     * Mapping of the error page which will be displayed in case of an error.
      * @param session - A HttpSession object, used to get information about the current session.
      * @param model - The model currently being used.
-     * @return - A string containing the name of the template to be displayed (error.html in this case).
+     * @return - Returns a String containing the name of the template to be displayed.
      */
     @RequestMapping(value = "/error", method = RequestMethod.GET)
     public String error(HttpSession session, Model model) {

@@ -1,6 +1,8 @@
 package hbv501g.ProjectOne.Entities;
 
-/** Simple object used for passing search parameters to html-templates. **/
+/**
+ * Object used for passing search parameters to html-templates.
+ */
 public class SearchModel {
     /**
      * Variables.
