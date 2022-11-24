@@ -50,7 +50,8 @@ public class homeController {
         return "index";
     }
 
-    /** Mapping of the search feature.
+    /**
+     *  Mapping of the search feature.
      *  Happens when the search button is clicked.
      *  The search-parameters are retrieved and the database is
      *  queried for the recipes that match, which is then attached
@@ -66,7 +67,8 @@ public class homeController {
 
     }
 
-    /** Link to a page with only a single recipe.
+    /**
+     *  Link to a page with only a single recipe.
      *  Retrieves the id parameter from the url, queries the
      *  database for the recipe with the matching id and adds
      *  it to the model. This model is then sent to the
@@ -92,6 +94,12 @@ public class homeController {
         return "singleRecipePage";
     }
 
+    /**
+     * The
+     * @param session
+     * @param model
+     * @return
+     */
     @RequestMapping(value = "/error", method = RequestMethod.GET)
     public String error(HttpSession session, Model model) {
         return "error";
