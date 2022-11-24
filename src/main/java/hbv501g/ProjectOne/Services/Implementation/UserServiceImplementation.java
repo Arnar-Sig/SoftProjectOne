@@ -130,18 +130,18 @@ public class UserServiceImplementation implements UserService {
 
     /**
      * Removes a recipe from a user's list of favourite recipes.
+     *
      * @param user - User whose list of favourite recipes is to be changed.
-     * @param id - Id of recipe to be removed from the user's list of favourite recipes.
+     * @param id   - Id of recipe to be removed from the user's list of favourite recipes.
      */
     @Override
-    public HashSet<Long> removeFromFavourites(User user, Long id) {
+    public void removeFromFavourites(User user, Long id) {
         user.removeFromFavouriteRecipes(id);
         save(user);
 
         for (Long i:user.getFavoriteRecipes()) {
             System.out.println(i);
         }
-        return null;
     }
 
     @Override

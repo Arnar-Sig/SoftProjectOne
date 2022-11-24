@@ -67,10 +67,28 @@ public interface UserService {
     /**
      * Removes a recipe from a user's list of favourite recipes.
      * @param user - User whose list of favourite recipes is to be changed.
-     * @param id - Id of recipe to be removed from the user's list of favourite recipes.
+     * @param id   - Id of recipe to be removed from the user's list of favourite recipes.
      */
-    HashSet<Long> removeFromFavourites(User user, Long id);
+    void removeFromFavourites(User user, Long id);
+
+    /**
+     * Checks if a User already exists with the name provided.
+     * @param username The name to check for.
+     * @return Boolean value of whether there already exists a user with the name.
+     */
     Boolean userExistsWithUsername(String username);
+
+    /**
+     * Checks if the user has any recipes favourited.
+     * @param user The user to be checked.
+     * @return Boolean value of whether the user has any recipes favourited.
+     */
     Boolean hasFavourites(User user);
+
+    /**
+     * Gets the favourited recipes of a user.
+     * @param user The user to be checked.
+     * @return Arraylist of recipes which the user has added to favourites..
+     */
     ArrayList<Recipe> getFavourites(User user);
 }
