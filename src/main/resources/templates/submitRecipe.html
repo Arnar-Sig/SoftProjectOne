@@ -12,15 +12,41 @@
           crossorigin="anonymous"></script>
 </head>
 <body>
-  <form action="#" th:action="@{/submitRecipe}" th:object="${newRecipeCreationForm}" method="post">
-    <p>Recipe name: <input type="text" th:field="*{name}" required/></p>
-    <p>Ingredient 1: <input type="text" th:field="*{ingredient0}" required/></p>
-    <p>Ingredient 2: <input type="text" th:field="*{ingredient1}"/></p>
-    <p>Ingredient 3: <input type="text" th:field="*{ingredient2}"/></p>
-    <p>Ingredient 4: <input type="text" th:field="*{ingredient3}"/></p>
-    <p>Ingredient 5: <input type="text" th:field="*{ingredient4}"/></p>
-    <p>Instructions: <input type="text" th:field="*{instructions}" required/></p>
-    <input type="submit" value="Submit">
-  </form>
+<section class="vh-100" style="background-color: #eee;">
+  <div class="container h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-lg-12 col-xl-11">
+        <div class="card text-black" style="border-radius: 25px;">
+          <div class="card-body p-md-5">
+            <div class="row justify-content-center">
+              <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
+
+                <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Submit recipe:</p>
+
+                <form action="#" th:action="@{/submitRecipe}" th:object="${newRecipeCreationForm}" method="post">
+                  <p>Recipe name: <input type="text" th:field="*{name}" required/></p>
+                  <p>Ingredient 1: <input type="text" th:field="*{ingredient0}" required/></p>
+                  <p>Ingredient 2: <input type="text" th:field="*{ingredient1}"/></p>
+                  <p>Ingredient 3: <input type="text" th:field="*{ingredient2}"/></p>
+                  <p>Ingredient 4: <input type="text" th:field="*{ingredient3}"/></p>
+                  <p>Ingredient 5: <input type="text" th:field="*{ingredient4}"/></p>
+                  <p>Instructions: <input type="text" th:field="*{instructions}" required/></p>
+                  <input type="submit" value="Submit">
+                </form>
+
+              </div>
+              <div class="col-md-10 col-lg-6 col-xl-7 d-flex align-items-center order-1 order-lg-2">
+
+                <img src="/img/lazy.png"
+                     class="img-fluid" alt="Sample image">
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 </body>
 </html>

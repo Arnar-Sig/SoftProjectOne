@@ -58,6 +58,11 @@ public interface RecipeService {
      */
     void submitRecipe(RecipeCreationForm recipeCreationForm);
 
+    /**
+     * Checks whether a recipe name is already taken.
+     * @param name - The name to be checked.
+     * @return - Boolean; true if there already exists a recipe with the given name, false otherwise.
+     */
     Boolean nameAlreadyTaken(String name);
 
     /**
