@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 /**
  * Controller for most things recipe-related.
+ * JAVADOC finished.
  */
 @Controller
 public class recipeController {
@@ -34,6 +35,7 @@ public class recipeController {
 
     /**
      * Mapping of the page where a recipe can be submitted.
+     * @param model - The model currently being used.
      * @return - A string containing the name of the template to be displayed (singleRecipePage.html in this case).
      */
     @RequestMapping(value = "/submitRecipe", method = RequestMethod.GET)

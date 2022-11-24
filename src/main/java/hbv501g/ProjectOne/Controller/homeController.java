@@ -15,7 +15,7 @@ import javax.servlet.http.HttpSession;
 import java.util.HashSet;
 
 /**
- * General controller class for all aspects of the website other than the user.
+ * General controller class for home page and search feature.
  * JAVADOC finished.
  */
 @Controller
