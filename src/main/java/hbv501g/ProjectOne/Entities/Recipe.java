@@ -15,9 +15,7 @@ public class Recipe {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long id;
-
 	private HashSet<String> ingredients;
-	//@Column(columnDefinition = "TEXT", length = 1000)
 	private String instructions;
 	private String imageName;
 	private String name;
