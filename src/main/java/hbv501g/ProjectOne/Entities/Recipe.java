@@ -1,6 +1,7 @@
 package hbv501g.ProjectOne.Entities;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.HashSet;
 
 /**
@@ -22,7 +23,7 @@ public class Recipe {
 	private HashSet<String> comments;
 	@ManyToOne(fetch = FetchType.LAZY)
 	private User user;
-	private HashSet<Integer> ratings;	// Contains individual ratings.
+	private ArrayList<Integer> ratings;	// Contains individual ratings.
 	private HashSet<String> raters; 	// Contains usernames of those who have rated.
 	private int rating;	// Recipe's rating. Average of ratings.
 
@@ -63,7 +64,7 @@ public class Recipe {
 	public String getName() {
 		return name;
 	}
-	public HashSet<Integer> getRatings() {
+	public ArrayList<Integer> getRatings() {
 		return ratings;
 	}
 	public HashSet<String> getRaters() {
@@ -90,7 +91,7 @@ public class Recipe {
 		this.name = name;
 		this.rating = 5;
 		this.raters = new HashSet<>();
-		this.ratings = new HashSet<>();
+		this.ratings = new ArrayList<>();
 		this.comments = new HashSet<>();
 		this.imageName = imageName;
 	}
