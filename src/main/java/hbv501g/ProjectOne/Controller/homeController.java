@@ -15,7 +15,8 @@ import javax.servlet.http.HttpSession;
 import java.util.HashSet;
 
 /**
- * General controller class for all aspects of the website other than the user.
+ * General controller class for home page and search feature.
+ * JAVADOC finished.
  */
 @Controller
 public class homeController {
@@ -92,6 +93,12 @@ public class homeController {
         return "singleRecipePage";
     }
 
+    /**
+     * Mapping for the error page.
+     * @param session - A HttpSession object, used to get information about the current session.
+     * @param model - The model currently being used.
+     * @return - A string containing the name of the template to be displayed (error.html in this case).
+     */
     @RequestMapping(value = "/error", method = RequestMethod.GET)
     public String error(HttpSession session, Model model) {
         return "error";

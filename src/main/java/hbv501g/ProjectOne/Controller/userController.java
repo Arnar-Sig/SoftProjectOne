@@ -18,6 +18,7 @@ import java.util.List;
 
 /**
  * Controller class for all aspects of the website related to the user.
+ * JAVADOC finished.
  */
 @Controller
 public class userController {
@@ -72,7 +73,7 @@ public class userController {
     }
 
     /**
-     *
+     * Mapping for the loggedInUser page.
      * @param session - A HttpSession object, used to get information about the current session.
      * @param model - The model currently being used.
      * @return - A string containing the name of the template to be displayed.
@@ -87,6 +88,12 @@ public class userController {
         return "redirect:/singleRecipePage";
     }
 
+    /**
+     * Mapping for logout. Logs user out and redirects him to the front page.
+     * @param session - A HttpSession object, used to get information about the current session.
+     * @param model - The model currently being used.
+     * @return - A string containing the name of the template to be displayed.
+     */
     @RequestMapping(value = "/logout", method = RequestMethod.GET)
     public String logout(HttpSession session, Model model){
         session.invalidate();
@@ -105,7 +112,7 @@ public class userController {
     }
 
     /**
-     *
+     * PostMapping for the signup page.
      * @param user - User to be created.
      * @param session - A HttpSession object, used to get information about the current session.
      * @param result - BindingResult hlutur til þess að grípa villur.
@@ -126,7 +133,7 @@ public class userController {
     }
 
     /**
-     * Adds recipe to a user's list of favourites.
+     * Mapping for saving a recipe. Adds recipe to a user's list of favourites.
      * @param id - The id of the recipe to be added to the user's list of favourite recipes.
      * @param session - A HttpSession object, used to get information about the current session.
      * @param model - The model currently being used.
@@ -227,6 +234,8 @@ public class userController {
 
     /**
      * Mapping for user page.
+     * @param session - A HttpSession object, used to get information about the current session.
+     * @param model - The model currently being used.
      */
     @RequestMapping(value = "/user", method = RequestMethod.GET)
     public String userGet(HttpSession session, Model model) {
@@ -234,21 +243,9 @@ public class userController {
         if(sessionUser == null){
             return "redirect:/loginPage";
         }
-
         User user = userService.findByUsername(sessionUser);
-        //System.out.println("DEBUG - user has favourites?: " + userService.hasFavourites(user));
         ArrayList<Recipe> favouriteRecipes = userService.getFavourites(user);
-        //System.out.println("DEBUG - favouriteRecipes ArrayList empty?: " + favouriteRecipes.isEmpty());
-        //System.out.println("DEBUG - favouriteRecipes ArrayList size: " + favouriteRecipes.size());
         model.addAttribute("favouriteRecipes", favouriteRecipes);
-
         return "user";
     }
-/**
-    @RequestMapping(value = "/user", method = RequestMethod.POST)
-    public String userPost(HttpSession session, Model model) {
-        System.out.println("DEBUG - userPost()");
-        return "user";
-    }
-    **/
 }
