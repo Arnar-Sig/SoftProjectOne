@@ -104,7 +104,7 @@ public class RecipeServiceImplementation implements RecipeService {
     /**
      * Finds and returns a Recipe from its id.
      * @param id - Id of the recipe.
-     * @return - Recipe.
+     * @return - Recipe with the corresponding id.
      */
     @Override
     public Optional<Recipe> findByID(Long id){
@@ -115,6 +115,12 @@ public class RecipeServiceImplementation implements RecipeService {
         }
     }
 
+    /**
+     * Adds a rating to a recipe.
+     * @param rating The rating to be added to the recipe.
+     * @param user   The user adding the rating.
+     * @param recipe The recipe being rated.
+     */
     @Override
     public void addRating(int rating, User user, Recipe recipe) {
         recipe.addRating(rating, user.getUsername());
@@ -123,6 +129,10 @@ public class RecipeServiceImplementation implements RecipeService {
 
     }
 
+    /**
+     * Updates the rating on a recipe.
+     * @param recipe The recipe to be updated.
+     */
     @Override
     public void updateRating(Recipe recipe) {
         Double sum = 0.0;
@@ -140,17 +150,30 @@ public class RecipeServiceImplementation implements RecipeService {
         else {recipe.setRating(5); save(recipe);}
     }
 
+    /**
+     * Saves a recipe to the database.
+     * @param recipe The recipe being saved.
+     */
     @Override
     public void save(Recipe recipe) {
         recipeRepository.save(recipe);
     }
 
+    /**
+     * Adds a comment to a recipe.
+     * @param recipe  The recipe which will have a comment added to it.
+     * @param comment The comment being added to the recipe.
+     */
     @Override
     public void addComment(Recipe recipe, String comment) {
         recipe.AddComment(comment);
         save(recipe);
     }
 
+    /**
+     * Adds a recipe being submitted to the database.
+     * @param newRecipeCreationForm The form containing the information on the recipe being created.
+     */
     @Override
     public void submitRecipe(RecipeCreationForm newRecipeCreationForm) {
         if (!nameAlreadyTaken(newRecipeCreationForm.getName())) {
@@ -198,6 +221,10 @@ public class RecipeServiceImplementation implements RecipeService {
         return false;
     }
 
+    /**
+     * Gets all recipes from the database.
+     * @return Arraylist of all recipes from the database.
+     */
     @Override
     public ArrayList<Recipe> getAll() {
         List<Recipe> allRecipes = recipeRepository.findAll();

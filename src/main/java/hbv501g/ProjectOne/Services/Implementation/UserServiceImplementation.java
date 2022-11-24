@@ -144,6 +144,11 @@ public class UserServiceImplementation implements UserService {
         }
     }
 
+    /**
+     * Checks if a user exists with the username.
+     * @param username The name to check for.
+     * @return Boolean value of whether a user exists with the username.
+     */
     @Override
     public Boolean userExistsWithUsername(String username) {
         ArrayList<User> allUsers= (ArrayList<User>) userRepository.findAll();
