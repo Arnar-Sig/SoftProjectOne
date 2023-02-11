@@ -209,4 +209,9 @@ public class RecipeServiceImplementation implements RecipeService {
         }
         return allRecipesArrayList;
     }
+
+    @Override
+    public List<Recipe> findAll() {
+        return recipeRepository.findAll();
+    }
 }

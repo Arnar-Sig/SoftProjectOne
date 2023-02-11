@@ -5,6 +5,7 @@ import hbv501g.ProjectOne.Entities.RecipeCreationForm;
 import hbv501g.ProjectOne.Entities.User;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 /**
@@ -32,4 +33,5 @@ public interface RecipeService {
     void submitRecipe(RecipeCreationForm recipeCreationForm);
     Boolean nameAlreadyTaken(String name);
     ArrayList<Recipe> getAll();
+    List<Recipe> findAll();
 }
