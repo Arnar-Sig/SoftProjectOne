@@ -5,6 +5,7 @@ import hbv501g.ProjectOne.Entities.RecipeCreationForm;
 import hbv501g.ProjectOne.Entities.User;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 /**
@@ -70,4 +71,5 @@ public interface RecipeService {
      * @return Returns an arraylist of recipes.
      */
     ArrayList<Recipe> getAll();
+    List<Recipe> findAll();
 }
