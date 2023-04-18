@@ -121,4 +121,8 @@ public class Recipe {
 				", comments='" + comments + '\'' +
 				'}';
 	}
+
+	public void setId(long l) {
+		this.id = l;
+	}
 }
