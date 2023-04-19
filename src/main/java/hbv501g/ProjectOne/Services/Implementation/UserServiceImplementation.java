@@ -105,10 +105,6 @@ public class UserServiceImplementation implements UserService {
     public HashSet<Long> addToFavorites(User user, Long id) {
         user.addToFavoriteRecipes(id);
         save(user);
-
-        for (Long i:user.getFavoriteRecipes()) {
-            System.out.println(i);
-        }
         return null;
     }
 

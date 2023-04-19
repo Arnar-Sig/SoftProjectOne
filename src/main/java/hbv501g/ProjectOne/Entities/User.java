@@ -1,13 +1,7 @@
 package hbv501g.ProjectOne.Entities;
 
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-
 import javax.persistence.*;
-import javax.servlet.http.HttpSession;
-import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.List;
 
 /**
  * User object. Contains information pertaining to a particular user.
@@ -19,8 +13,8 @@ public class User {
      * Variables.
      */
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long ID;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
 
     private String username;
     private String password;
@@ -42,16 +36,17 @@ public class User {
         this.username = username;
         this.password = password;
         favoriteRecipes = new HashSet<>();
+        this.id = System.currentTimeMillis();
     }
 
     /**
      * Getters and setters.
      */
-    public long getID() {
-        return ID;
+    public Long getId() {
+        return id;
     }
-    public void setID(long ID) {
-        this.ID = ID;
+    public void setId(long id) {
+        this.id = id;
     }
     public String getUsername() {
         return username;
