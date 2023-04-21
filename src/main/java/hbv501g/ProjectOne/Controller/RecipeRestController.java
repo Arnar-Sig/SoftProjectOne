@@ -111,6 +111,24 @@ public class RecipeRestController {
         return ResponseEntity.ok("All users deleted successfully");
     }
 
+    @RequestMapping(value = "/restDeleteAllRecipes", method = RequestMethod.GET)
+    public ResponseEntity<String> deleteAllRecipes() {
+        System.out.println("--------------------------------------------");
+        System.out.println("Inside /restDeleteAllRecipes");
+        recipeService.deleteAll();
+        return ResponseEntity.ok("All recipes deleted successfully");
+    }
+
+    @RequestMapping(value = "/restDeleteRecipe", method = RequestMethod.POST)
+    public ResponseEntity<String> deleteRecipe(@RequestBody Recipe recipe) {
+        System.out.println("--------------------------------------------");
+        System.out.println("Inside restDeleteRecipe");
+        recipeService.deleteById(recipe.getId());
+        return ResponseEntity.ok("Recipe changed successfully");
+    }
+
+
+
 
 
 

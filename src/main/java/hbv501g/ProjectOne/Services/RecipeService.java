@@ -72,4 +72,6 @@ public interface RecipeService {
      */
     ArrayList<Recipe> getAll();
     List<Recipe> findAll();
+    void deleteAll();
+    void deleteById(Long id);
 }

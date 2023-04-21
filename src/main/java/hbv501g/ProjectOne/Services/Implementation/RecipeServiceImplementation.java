@@ -239,4 +239,14 @@ public class RecipeServiceImplementation implements RecipeService {
     public List<Recipe> findAll() {
         return recipeRepository.findAll();
     }
+
+    @Override
+    public void deleteAll(){
+        recipeRepository.deleteAll();
+    }
+
+    @Override
+    public void deleteById(Long id) {
+        recipeRepository.deleteById(id);
+    }
 }
