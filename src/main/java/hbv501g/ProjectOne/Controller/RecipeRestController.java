@@ -100,38 +100,15 @@ public class RecipeRestController {
         else{
             System.out.println("User with name: " + user.getUsername() + " does not exist");
         }
-
-
-        //userService.save(user);
-        /*
-
-        if(userService.findByUsername(user.getUsername())!=null){
-            User userToBeDeleted = userService.findByUsername(user.getUsername());
-            userService.delete(userToBeDeleted);
-            userService.save(user);
-        }
-        else{
-            System.out.println("User with name: " + user.getUsername() + " does not exist");
-            userService.save(user);
-        }
-        */
-        /*
-        if(users!=null) {
-            System.out.println("list of users: " + users);
-            System.out.println("size of users: " + users.size());
-        }
-         */
-        /*
-        HashSet<Long> recipesOfIncomingUser = user.getFavoriteRecipes();
-        System.out.println("Recipes of incoming user: " + recipesOfIncomingUser);
-        System.out.println("User id: "+ user.getID());
-        for(Long id : recipesOfIncomingUser){
-            userService.addToFavorites(user, id);
-            userService.save(user);
-        }
-         */
-        //System.out.println("Client requests to update: " + user.getUsername() + " with user-id: " + user.getID());
         return ResponseEntity.ok("User changed successfully");
+    }
+
+    @RequestMapping(value = "/restDeleteAllUsers", method = RequestMethod.GET)
+    public ResponseEntity<String> deleteAllUsers() {
+        System.out.println("--------------------------------------------");
+        System.out.println("Inside /restDeleteAllUsers");
+        userService.deleteAll();
+        return ResponseEntity.ok("All users deleted successfully");
     }
 
 
