@@ -127,31 +127,11 @@ public class RecipeRestController {
         return ResponseEntity.ok("Recipe changed successfully");
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    @RequestMapping(value = "/restDeleteUser", method = RequestMethod.POST)
+    public ResponseEntity<String> deleteUser(@RequestBody User user) {
+        User usrToDelete = userService.findByUsername(user.getUsername());
+        userService.delete(usrToDelete);
+        return ResponseEntity.ok("User deleted!");
+    }
 
 }
